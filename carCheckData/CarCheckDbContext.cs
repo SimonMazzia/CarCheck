@@ -5,7 +5,7 @@ namespace carCheckData
 {
     public class CarCheckDbContext : DbContext
     {
-        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Usuario> Clientes { get; set; }
         public DbSet<Vehiculo> Vehiculos { get; set; }
         public DbSet<Servicio> Servicios { get; set; }
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace carCheckData.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class reestructurainicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,9 +17,9 @@ namespace carCheckData.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NombreCompleto = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -38,14 +38,14 @@ namespace carCheckData.Migrations
                     Anio = table.Column<int>(type: "int", nullable: false),
                     Patente = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Kilometraje = table.Column<int>(type: "int", nullable: false),
-                    ClienteId = table.Column<int>(type: "int", nullable: false)
+                    UsuarioId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vehiculos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Vehiculos_Clientes_ClienteId",
-                        column: x => x.ClienteId,
+                        name: "FK_Vehiculos_Clientes_UsuarioId",
+                        column: x => x.UsuarioId,
                         principalTable: "Clientes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -81,9 +81,9 @@ namespace carCheckData.Migrations
                 column: "VehiculoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Vehiculos_ClienteId",
+                name: "IX_Vehiculos_UsuarioId",
                 table: "Vehiculos",
-                column: "ClienteId");
+                column: "UsuarioId");
         }
 
         /// <inheritdoc />

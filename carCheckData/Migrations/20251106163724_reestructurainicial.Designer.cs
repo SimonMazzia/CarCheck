@@ -12,8 +12,8 @@ using carCheckData;
 namespace carCheckData.Migrations
 {
     [DbContext(typeof(CarCheckDbContext))]
-    [Migration("20251105173110_Inicial")]
-    partial class Inicial
+    [Migration("20251106163724_reestructurainicial")]
+    partial class reestructurainicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,35 +24,6 @@ namespace carCheckData.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("carCheckEntities.Cliente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Apellido")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefono")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clientes");
-                });
 
             modelBuilder.Entity("carCheckEntities.Servicio", b =>
                 {
@@ -89,6 +60,35 @@ namespace carCheckData.Migrations
                     b.ToTable("Servicios");
                 });
 
+            modelBuilder.Entity("carCheckEntities.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreCompleto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreUsuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clientes");
+                });
+
             modelBuilder.Entity("carCheckEntities.Vehiculo", b =>
                 {
                     b.Property<int>("Id")
@@ -98,9 +98,6 @@ namespace carCheckData.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Anio")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<int>("Kilometraje")
@@ -118,9 +115,12 @@ namespace carCheckData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Vehiculos");
                 });
@@ -138,16 +138,16 @@ namespace carCheckData.Migrations
 
             modelBuilder.Entity("carCheckEntities.Vehiculo", b =>
                 {
-                    b.HasOne("carCheckEntities.Cliente", "Cliente")
+                    b.HasOne("carCheckEntities.Usuario", "Usuario")
                         .WithMany("Vehiculos")
-                        .HasForeignKey("ClienteId")
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cliente");
+                    b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("carCheckEntities.Cliente", b =>
+            modelBuilder.Entity("carCheckEntities.Usuario", b =>
                 {
                     b.Navigation("Vehiculos");
                 });
