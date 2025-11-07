@@ -12,8 +12,8 @@ using carCheckData;
 namespace carCheckData.Migrations
 {
     [DbContext(typeof(CarCheckDbContext))]
-    [Migration("20251106163724_reestructurainicial")]
-    partial class reestructurainicial
+    [Migration("20251107174317_reestructuracioninicial")]
+    partial class reestructuracioninicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,10 +72,6 @@ namespace carCheckData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NombreCompleto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NombreUsuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -86,7 +82,7 @@ namespace carCheckData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clientes");
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("carCheckEntities.Vehiculo", b =>

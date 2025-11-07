@@ -6,25 +6,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace carCheckData.Migrations
 {
     /// <inheritdoc />
-    public partial class reestructurainicial : Migration
+    public partial class reestructuracioninicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Clientes",
+                name: "Usuarios",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NombreCompleto = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clientes", x => x.Id);
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,9 +43,9 @@ namespace carCheckData.Migrations
                 {
                     table.PrimaryKey("PK_Vehiculos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Vehiculos_Clientes_UsuarioId",
+                        name: "FK_Vehiculos_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
-                        principalTable: "Clientes",
+                        principalTable: "Usuarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -96,7 +95,7 @@ namespace carCheckData.Migrations
                 name: "Vehiculos");
 
             migrationBuilder.DropTable(
-                name: "Clientes");
+                name: "Usuarios");
         }
     }
 }

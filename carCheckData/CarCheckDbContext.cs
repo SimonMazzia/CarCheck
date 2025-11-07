@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using carCheckEntities;
+using System.Linq;
 
 namespace carCheckData
 {
     public class CarCheckDbContext : DbContext
     {
-        public DbSet<Usuario> Clientes { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Vehiculo> Vehiculos { get; set; }
         public DbSet<Servicio> Servicios { get; set; }
 
