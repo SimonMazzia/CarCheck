@@ -20,7 +20,32 @@ namespace carCheckFront
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e) { }
+        private void button1_Click(object sender, EventArgs e) 
+        {
+                Usuario nuevo = new Usuario
+                {
+                    NombreUsuario = textBox1.Text,
+                    Email = textBox2.Text,
+                    Password = textBox3.Text
+                };
+
+                // ✅ Creamos la instancia
+                UsuarioNegocio negocio = new UsuarioNegocio();
+
+                if (negocio.Registrar(nuevo))
+                {
+                    MessageBox.Show("Usuario registrado con éxito");
+                    this.Close();
+                    FrmLogin login = new FrmLogin();
+                    login.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Complete los campos");
+                }
+            }
+            
+
 
 
         private void button2_Click(object sender, EventArgs e)

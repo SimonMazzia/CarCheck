@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using carCheckBussines;
+using carCheckEntities;
 
 namespace carCheckFront
 {
@@ -31,13 +33,15 @@ namespace carCheckFront
         {
             String email = textBox1.Text.Trim();
             String password = textBox2.Text.Trim();
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            Usuario user = usuarioNegocio.Login(email, password);
 
-            if (email == "carcheck@gmail.com" && password == "admin123")
+
+            if (user != null)
             {
-                MessageBox.Show("Inicio de sesión exitoso.", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // FrmMain dashboard = new FrmMain();
-                //dashboard.Show();
-                this.Hide();
+                MessageBox.Show($"Bienvenido {user.NombreUsuario}");
+                //new frmPrincipal(user).Show();
+                //this.Close();
             }
             else
             {

@@ -1,14 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using carCheckData;
 using carCheckEntities;
-using carCheckData;
 
 namespace carCheckBussines
 {
-  public class UsuarioNegocio
-    { 
+    public class UsuarioNegocio
+    {
+        private UsuarioDatos usuarioDatos = new UsuarioDatos();
+
+        public bool Registrar(Usuario usuario)
+        {
+            if (string.IsNullOrEmpty(usuario.NombreUsuario) ||
+                string.IsNullOrEmpty(usuario.Email) ||
+                string.IsNullOrEmpty(usuario.Password))
+            { 
+              return false; 
+            }
+
+
+            usuario.Password = Seguridad.HashearPassword(usuario.Password);
+            using(var db= new CarCheckDbContext())
+            {
+                db.Usuarios.Add(usuario);
+                db.SaveChanges();
+            }
+
+            return true;
+        }
+        
+
+        public Usuario Login(string email, string password)
+        {
+            string passwordHasheada = Seguridad.HashearPassword(password);
+            return usuarioDatos.Login(email, passwordHasheada);
+        }
     }
 }
