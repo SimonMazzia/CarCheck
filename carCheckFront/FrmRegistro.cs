@@ -26,7 +26,7 @@ namespace carCheckFront
                 {
                     NombreUsuario = textBox1.Text,
                     Email = textBox2.Text,
-                    Password = textBox3.Text
+                    PasswordHash = textBox3.Text
                 };
 
                 // ✅ Creamos la instancia

@@ -9,11 +9,11 @@ namespace carCheckBussines
 {
     public static class Seguridad
     {
-         public static string HashearPassword(string password)
+         public static string HashearPassword(string PasswordHash)
             {
               using (SHA256 sha256 = SHA256.Create())
                {
-                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] bytes = Encoding.UTF8.GetBytes(PasswordHash);
                 byte[] hash = sha256.ComputeHash(bytes);
 
                 StringBuilder builder = new StringBuilder();

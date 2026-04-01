@@ -22,7 +22,7 @@ namespace carCheckData
         {
             using (var db = new CarCheckDbContext())
             {
-                return db.Usuarios.FirstOrDefault(u => u.Email == email && u.Password == passwordHasheada);
+                return db.Usuarios.FirstOrDefault(u => u.Email == email && u.PasswordHash == passwordHasheada);
             }
         }
     }

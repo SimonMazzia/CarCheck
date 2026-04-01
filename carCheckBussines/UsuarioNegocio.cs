@@ -11,13 +11,13 @@ namespace carCheckBussines
         {
             if (string.IsNullOrEmpty(usuario.NombreUsuario) ||
                 string.IsNullOrEmpty(usuario.Email) ||
-                string.IsNullOrEmpty(usuario.Password))
+                string.IsNullOrEmpty(usuario.PasswordHash))
             { 
               return false; 
             }
 
 
-            usuario.Password = Seguridad.HashearPassword(usuario.Password);
+            usuario.PasswordHash = Seguridad.HashearPassword(usuario.PasswordHash);
             using(var db= new CarCheckDbContext())
             {
                 db.Usuarios.Add(usuario);
