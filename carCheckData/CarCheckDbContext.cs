@@ -9,6 +9,8 @@ namespace carCheckData
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Vehiculo> Vehiculos { get; set; }
         public DbSet<Servicio> Servicios { get; set; }
+        public DbSet<TipoServicio> TiposServicio { get; set; }
+        public DbSet<Estado> Estados { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
