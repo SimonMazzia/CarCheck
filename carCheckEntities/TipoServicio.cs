@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace carCheckEntities
+{
+    public class TipoServicio
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+        public ICollection<Servicio> Servicios { get; set; } = new List<Servicio>();
+    }
+}

@@ -12,6 +12,7 @@ public class Servicio
 
     public DateTime Fecha { get; set; }
 
+    public int TipoServicioId { get; set; }
     public TipoServicio TipoServicio { get; set; }
 
     public int Kilometraje { get; set; }
@@ -21,10 +22,4 @@ public class Servicio
 
     [Column(TypeName = "decimal(10,2)")]
     public decimal Costo { get; set; }
-}
-
-public enum TipoServicio
-{
-    Preventivo,
-    Correctivo
 }
