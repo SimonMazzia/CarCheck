@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\carCheckData\carCheckData.csproj" />
     <ProjectReference Include="..\carCheckEntities\carCheckEntities.csproj" />
+    <ProjectReference Include="..\carCheckServicios\carCheckServicios.csproj" />
   </ItemGroup>
 
 </Project>

@@ -56,5 +56,26 @@ namespace carCheckFront
             FrmInicio inicio = new FrmInicio();
             inicio.Show();
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            {
+                Console.WriteLine($"correo ingresado: {textBox1.Text}");
+
+                //
+               // var negocio = new UsuarioNegocio();
+
+
+                //bool resultado = negocio.RecuperarPassword(textBox1.Text);
+                //if (resultado)
+                //{
+                  //  MessageBox.Show("Si el correo existe en nuestro sistema, se ha enviado un email con instrucciones para recuperar tu contraseña.");
+//}
+               // else
+               // {
+                   // MessageBox.Show("No se pudo iniciar el proceso de recuperación. Por favor, intenta nuevamente más tarde.");
+                //}
+            }
+        }
     }
 }
