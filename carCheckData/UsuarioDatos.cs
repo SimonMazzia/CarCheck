@@ -44,25 +44,15 @@ namespace carCheckData
         }
     
         public void GuardarTokenRecuperacion(int usuarioId, string token)
-        {
-            try
+        { 
+          using (var context = new CarCheckDbContext())
             {
-                using (var context = new CarCheckDbContext())
+                var usuario = context.Usuarios.Find(usuarioId);
+                if (usuario != null)
                 {
-
-                    {
-
-                        var usuario = context.Usuarios.Find(usuarioId);
-                        usuario.TokenRecuperacion = token;
-                        context.SaveChanges();
-                    }
+                    usuario.TokenRecuperacion = token;
+                    context.SaveChanges();
                 }
-            }
-            catch (Exception ex)
-            {
-                // Manejar la excepción (por ejemplo, registrar el error)
-                Console.WriteLine($"Error al guardar el token de recuperación: {ex.Message}");
-                throw;
             }
 
         }

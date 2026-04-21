@@ -17,6 +17,7 @@ namespace carCheckFront
         public FrmLogin()
         {
             InitializeComponent();
+            this.linkLabel2.LinkClicked += linkLabel2_LinkClicked;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -60,22 +61,29 @@ namespace carCheckFront
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             {
-                Console.WriteLine($"correo ingresado: {textBox1.Text}");
+                string email = textBox1.Text.Trim();
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                    MessageBox.Show("Ingrese un correo valido");
+                    return;
+                }
 
-                //
-               // var negocio = new UsuarioNegocio();
-
-
-                //bool resultado = negocio.RecuperarPassword(textBox1.Text);
-                //if (resultado)
-                //{
-                  //  MessageBox.Show("Si el correo existe en nuestro sistema, se ha enviado un email con instrucciones para recuperar tu contraseña.");
-//}
-               // else
-               // {
-                   // MessageBox.Show("No se pudo iniciar el proceso de recuperación. Por favor, intenta nuevamente más tarde.");
-                //}
+                var negocio = new UsuarioNegocio();
+                bool resultado = negocio.RecuperarPassword(email);
+                if (resultado)
+                {
+                    MessageBox.Show("Se envio un correo para la recuperacion");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo iniciar el proceso");
+                }
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

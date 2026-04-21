@@ -39,13 +39,13 @@ namespace carCheckBussines
         {
             try
             {
+                var usuarioDatos = new UsuarioDatos();
                 var usuario = usuarioDatos.ObtenerPorCorreo(email);
-                if (usuario == null)
+                if ( usuario== null)
                 {
                     Console.WriteLine("No se encontró un usuario con ese correo.");
                     return false;
                 }
-
                 //generar token con guid
                 String token = Guid.NewGuid().ToString();
                 Console.WriteLine("Token generado para recuperación");
@@ -53,7 +53,7 @@ namespace carCheckBussines
                 usuarioDatos.GuardarTokenRecuperacion(usuario.Id, token);
                 //enviar correo con el token
                 ServicioCorreo.EnviarRecuperacion(email, token);
-                Console.WriteLine("Correo de recuperación enviado");
+                
                 return true;
             }
             catch (Exception ex)
