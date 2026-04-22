@@ -29,26 +29,24 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            linkLabel1 = new LinkLabel();
+            button3 = new Button();     
             button2 = new Button();
             button1 = new Button();
             textBox2 = new TextBox();
             label2 = new Label();
             textBox1 = new TextBox();
             label1 = new Label();
-            linkLabel2 = new LinkLabel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
-            panel1.Controls.Add(linkLabel2);
-            panel1.Controls.Add(linkLabel1);
+            panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label2);    
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(12, 12);
@@ -56,12 +54,7 @@
             panel1.Size = new Size(360, 222);
             panel1.TabIndex = 0;
             // 
-            // linkLabel1
-            // 
-            linkLabel1.Location = new Point(0, 0);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(100, 23);
-            linkLabel1.TabIndex = 0;
+         
             // 
             // button2
             // 
@@ -71,7 +64,7 @@
             button2.TabIndex = 5;
             button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button2.Click += btnCancelarVolverInicio_Click;
             // 
             // button1
             // 
@@ -120,17 +113,7 @@
             label1.Text = "Correo electronico:";
             label1.Click += label1_Click;
             // 
-            // linkLabel2
-            // 
-            linkLabel2.AutoSize = true;
-            linkLabel2.Location = new Point(223, 172);
-            linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(123, 15);
-            linkLabel2.TabIndex = 6;
-            linkLabel2.TabStop = true;
-            linkLabel2.Text = "Recuperar Contraseña";
-            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
-            // 
+  
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -143,6 +126,17 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
+
+            // button3
+            // 
+            button3.Location = new Point(132, 160);
+            button3.Name = "button3";
+            button3.Size = new Size(214, 23);
+            button3.TabIndex = 6;
+            button3.Text = "Recuperar contraseña";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
         }
 
         #endregion
@@ -156,5 +150,6 @@
         private Button button1;
         private LinkLabel linkLabel1;
         private LinkLabel linkLabel2;
+        private Button button3;
     }
 }

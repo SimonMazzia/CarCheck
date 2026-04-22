@@ -26,35 +26,27 @@ namespace carCheckData
             }
         }
 
-        public Usuario ObtenerPorCorreo(string email)
+        public bool ExisteEmail(string email)
         {
-            try
+            using (var db = new CarCheckDbContext())
             {
-                using (var context = new CarCheckDbContext())
-                {
-                    return context.Usuarios.FirstOrDefault(u => u.Email == email);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Manejar la excepción (por ejemplo, registrar el error)
-                Console.WriteLine($"Error al obtener el usuario por correo: {ex.Message}");
-                return null;
+                return db.Usuarios.Any(u => u.Email == email);
             }
         }
-    
-        public void GuardarTokenRecuperacion(int usuarioId, string token)
-        { 
-          using (var context = new CarCheckDbContext())
+        public bool ActualizarPassword(string email, string nuevaContrasenaHasheada)
+        {
+            using (var db = new CarCheckDbContext())
             {
-                var usuario = context.Usuarios.Find(usuarioId);
-                if (usuario != null)
+                Usuario? usuario = db.Usuarios.FirstOrDefault(u => u.Email == email);
+                if (usuario == null)
                 {
-                    usuario.TokenRecuperacion = token;
-                    context.SaveChanges();
+                    return false;
                 }
-            }
+                usuario.PasswordHash = nuevaContrasenaHasheada;
 
+                db.SaveChanges();
+                return true;
+            }
         }
     } 
 }
