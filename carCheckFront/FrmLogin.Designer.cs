@@ -31,6 +31,7 @@
             panel1 = new Panel();
             button2 = new Button();
             button1 = new Button();
+            button3 = new Button();
             textBox2 = new TextBox();
             label2 = new Label();
             textBox1 = new TextBox();
@@ -41,6 +42,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDark;
+            panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox2);
@@ -51,6 +53,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(360, 222);
             panel1.TabIndex = 0;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(132, 160);
+            button3.Name = "button3";
+            button3.Size = new Size(214, 23);
+            button3.TabIndex = 6;
+            button3.Text = "Recuperar contraseña";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -132,5 +144,6 @@
         private Label label2;
         private Button button2;
         private Button button1;
+        private Button button3;
     }
 }

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using carCheckBussines;
+﻿using carCheckBussines;
 using carCheckEntities;
 
 namespace carCheckFront
@@ -21,28 +12,25 @@ namespace carCheckFront
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String email = textBox1.Text.Trim();
-            String password = textBox2.Text.Trim();
+            string email = textBox1.Text.Trim();
+            string password = textBox2.Text.Trim();
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             Usuario user = usuarioNegocio.Login(email, password);
-
 
             if (user != null)
             {
                 MessageBox.Show($"Bienvenido {user.NombreUsuario}");
                 FrmPrincipal frm = new FrmPrincipal(user);
                 frm.Show();
-                this.Hide();
+                Hide();
             }
             else
             {
@@ -52,9 +40,15 @@ namespace carCheckFront
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
             FrmInicio inicio = new FrmInicio();
             inicio.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using FrmRecuperarContrasena formRecuperar = new FrmRecuperarContrasena();
+            formRecuperar.ShowDialog(this);
         }
     }
 }
