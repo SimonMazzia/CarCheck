@@ -1,7 +1,4 @@
-﻿using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-
-namespace carCheckFront
+﻿namespace carCheckFront
 {
     partial class FrmRecuperarContrasena
     {
@@ -10,6 +7,9 @@ namespace carCheckFront
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        private Panel panel1;
+        private Label lblTitulo;
+        private Label lblSubtitulo;
         private Label lblEmail;
         private Label lblNueva;
         private Label lblConfirmar;
@@ -40,6 +40,9 @@ namespace carCheckFront
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
+            lblSubtitulo = new Label();
+            lblTitulo = new Label();
             lblEmail = new Label();
             lblNueva = new Label();
             lblConfirmar = new Label();
@@ -48,99 +51,154 @@ namespace carCheckFront
             txtConfirmarContrasena = new TextBox();
             btnActualizar = new Button();
             btnCancelar = new Button();
+            panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(24, 34, 46);
+            panel1.Controls.Add(lblSubtitulo);
+            panel1.Controls.Add(lblTitulo);
+            panel1.Controls.Add(lblEmail);
+            panel1.Controls.Add(lblNueva);
+            panel1.Controls.Add(lblConfirmar);
+            panel1.Controls.Add(txtEmail);
+            panel1.Controls.Add(txtNuevaContrasena);
+            panel1.Controls.Add(txtConfirmarContrasena);
+            panel1.Controls.Add(btnActualizar);
+            panel1.Controls.Add(btnCancelar);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Padding = new Padding(20);
+            panel1.Size = new Size(460, 290);
+            panel1.TabIndex = 0;
+            // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.AutoSize = true;
+            lblSubtitulo.Font = new Font("Segoe UI", 9F);
+            lblSubtitulo.ForeColor = Color.FromArgb(181, 195, 211);
+            lblSubtitulo.Location = new Point(24, 50);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(250, 15);
+            lblSubtitulo.TabIndex = 9;
+            lblSubtitulo.Text = "Actualizá tu contraseña de forma segura";
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(24, 20);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(237, 30);
+            lblTitulo.TabIndex = 8;
+            lblTitulo.Text = "Recuperar contraseña";
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(20, 25);
+            lblEmail.Font = new Font("Segoe UI", 10F);
+            lblEmail.ForeColor = Color.White;
+            lblEmail.Location = new Point(24, 95);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(46, 15);
+            lblEmail.Size = new Size(53, 19);
             lblEmail.TabIndex = 0;
             lblEmail.Text = "Correo:";
             // 
             // lblNueva
             // 
             lblNueva.AutoSize = true;
-            lblNueva.Location = new Point(20, 70);
+            lblNueva.Font = new Font("Segoe UI", 10F);
+            lblNueva.ForeColor = Color.White;
+            lblNueva.Location = new Point(24, 136);
             lblNueva.Name = "lblNueva";
-            lblNueva.Size = new Size(106, 15);
+            lblNueva.Size = new Size(116, 19);
             lblNueva.TabIndex = 1;
             lblNueva.Text = "Nueva contraseña:";
             // 
             // lblConfirmar
             // 
             lblConfirmar.AutoSize = true;
-            lblConfirmar.Location = new Point(20, 110);
+            lblConfirmar.Font = new Font("Segoe UI", 10F);
+            lblConfirmar.ForeColor = Color.White;
+            lblConfirmar.Location = new Point(24, 177);
             lblConfirmar.Name = "lblConfirmar";
-            lblConfirmar.Size = new Size(123, 15);
+            lblConfirmar.Size = new Size(135, 19);
             lblConfirmar.TabIndex = 2;
             lblConfirmar.Text = "Confirmar contraseña:";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(170, 22);
+            txtEmail.BackColor = Color.FromArgb(239, 244, 250);
+            txtEmail.Location = new Point(174, 94);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(220, 23);
+            txtEmail.Size = new Size(260, 23);
             txtEmail.TabIndex = 3;
             // 
             // txtNuevaContrasena
             // 
-            txtNuevaContrasena.Location = new Point(170, 67);
+            txtNuevaContrasena.BackColor = Color.FromArgb(239, 244, 250);
+            txtNuevaContrasena.Location = new Point(174, 135);
             txtNuevaContrasena.Name = "txtNuevaContrasena";
-            txtNuevaContrasena.Size = new Size(220, 23);
+            txtNuevaContrasena.Size = new Size(260, 23);
             txtNuevaContrasena.TabIndex = 4;
             txtNuevaContrasena.UseSystemPasswordChar = true;
             // 
             // txtConfirmarContrasena
             // 
-            txtConfirmarContrasena.Location = new Point(170, 107);
+            txtConfirmarContrasena.BackColor = Color.FromArgb(239, 244, 250);
+            txtConfirmarContrasena.Location = new Point(174, 176);
             txtConfirmarContrasena.Name = "txtConfirmarContrasena";
-            txtConfirmarContrasena.Size = new Size(220, 23);
+            txtConfirmarContrasena.Size = new Size(260, 23);
             txtConfirmarContrasena.TabIndex = 5;
             txtConfirmarContrasena.UseSystemPasswordChar = true;
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(170, 160);
+            btnActualizar.BackColor = Color.FromArgb(0, 122, 204);
+            btnActualizar.FlatAppearance.BorderSize = 0;
+            btnActualizar.FlatStyle = FlatStyle.Flat;
+            btnActualizar.ForeColor = Color.White;
+            btnActualizar.Location = new Point(230, 226);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(90, 23);
+            btnActualizar.Size = new Size(98, 32);
             btnActualizar.TabIndex = 6;
             btnActualizar.Text = "Actualizar";
-            btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.UseVisualStyleBackColor = false;
             btnActualizar.Click += BtnActualizar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(300, 160);
+            btnCancelar.BackColor = Color.FromArgb(52, 73, 94);
+            btnCancelar.FlatAppearance.BorderColor = Color.FromArgb(106, 125, 143);
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.ForeColor = Color.White;
+            btnCancelar.Location = new Point(336, 226);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(90, 23);
+            btnCancelar.Size = new Size(98, 32);
             btnCancelar.TabIndex = 7;
             btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += (_, _) => Close();
             // 
             // FrmRecuperarContrasena
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 220);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnActualizar);
-            Controls.Add(txtConfirmarContrasena);
-            Controls.Add(txtNuevaContrasena);
-            Controls.Add(txtEmail);
-            Controls.Add(lblConfirmar);
-            Controls.Add(lblNueva);
-            Controls.Add(lblEmail);
+            BackColor = Color.FromArgb(225, 232, 241);
+            ClientSize = new Size(460, 290);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmRecuperarContrasena";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Recuperar contraseña";
+            Text = "CarCheck - Recuperar contraseña";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

@@ -17,12 +17,28 @@ namespace carCheckFront
         public FrmLogin()
         {
             InitializeComponent();
-            
+            Load += FrmLogin_Load;
+            Resize+= FrmLogin_Resize;
+
+
         }
 
+        private void FrmLogin_Load(object? sender, EventArgs e)
+        {
+            CentrarPanel();
+        }
+        private void FrmLogin_Resize(object? sender, EventArgs e)
+        {
+            CentrarPanel();
+        }
+        private void CentrarPanel()
+        {
+            panel1.Left = (ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (ClientSize.Height - panel1.Height) / 2;
+
+        }
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -51,12 +67,7 @@ namespace carCheckFront
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
-            FrmInicio inicio = new FrmInicio();
-            inicio.Show();
-        }
+   
 
         private void btnCancelarVolverInicio_Click(object sender, EventArgs e)
         {
@@ -72,11 +83,10 @@ namespace carCheckFront
         private void button3_Click(object sender, EventArgs e)
         {
 
-            using (FrmRecuperarContrasena recuperar = new FrmRecuperarContrasena()) 
+            using (FrmRecuperarContrasena recuperar = new FrmRecuperarContrasena())
             {
                 recuperar.ShowDialog(this);
             }
-                
 
         }
     }

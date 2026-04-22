@@ -15,24 +15,31 @@ namespace carCheckFront
         public FrmInicio()
         {
             InitializeComponent();
+            Load += FrmInicio_Load;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void FrmInicio_Load(object? sender, EventArgs e)
         {
-
+            CentrarPanelPrincipal();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void FrmInicio_Resize(object? sender, EventArgs e)
         {
+            CentrarPanelPrincipal();
 
+        }
+        private void CentrarPanelPrincipal()
+        {
+            panel1.Left = (ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (ClientSize.Height - panel1.Height) / 2;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //boton iniciar sesion
             FrmLogin login = new FrmLogin();
-            login.Show();
-            this.Hide();
+            login.Show();   
+            Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -40,7 +47,7 @@ namespace carCheckFront
             //boton registrarse
             FrmRegistro registro= new FrmRegistro();
             registro.Show();
-            this.Hide();
+            Hide();
         }
     }
 }

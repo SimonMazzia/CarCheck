@@ -33,51 +33,73 @@
             button1 = new Button();
             button2 = new Button();
             label1 = new Label();
+            label2 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlDarkDark;
+            panel1.Anchor = AnchorStyles.None;
+            panel1.BackColor = Color.FromArgb(24, 34, 46);
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(200, 12);
+            panel1.Location = new Point(202, 83);
             panel1.Name = "panel1";
-            panel1.Size = new Size(420, 310);
+            panel1.Padding = new Padding(24);
+            panel1.Size = new Size(420, 262);
             panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.Dock = DockStyle.Top;
+            label2.Font = new Font("Segoe UI", 10F);
+            label2.ForeColor = Color.FromArgb(181, 195, 211);
+            label2.Location = new Point(24, 86);
+            label2.Name = "label2";
+            label2.Size = new Size(372, 36);
+            label2.TabIndex = 4;
+            label2.Text = "Gestión inteligente para vehículos y servicios";
+            label2.TextAlign = ContentAlignment.TopCenter;
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.AppWorkspace;
+            
             panel2.Controls.Add(button1);
             panel2.Controls.Add(button2);
-            panel2.Location = new Point(101, 147);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(24, 166);
             panel2.Name = "panel2";
-            panel2.Size = new Size(221, 62);
+            panel2.Size = new Size(372, 72);
             panel2.TabIndex = 3;
-            panel2.Paint += panel2_Paint;
+
             // 
             // button1
-            // 
+            //
+            button1.BackColor = Color.FromArgb(0, 122, 204);
+            button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(19, 19);
+            button1.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(36, 19);
             button1.Name = "button1";
-            button1.Size = new Size(90, 23);
+            button1.Size = new Size(136, 34);   
             button1.TabIndex = 1;
-            button1.Text = "Iniciar Sesion";
-            button1.UseVisualStyleBackColor = true;
+            button1.Text = "Iniciar Sesión";
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.BackColor = SystemColors.AppWorkspace;
+            button2.BackColor = Color.FromArgb(52, 73, 94);
+            button2.FlatAppearance.BorderColor = Color.FromArgb(106, 125, 143);
             button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(128, 19);
+            button2.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(199, 19);
             button2.Name = "button2";
-            button2.Size = new Size(77, 23);
+            button2.Size = new Size(136, 34);
             button2.TabIndex = 2;
             button2.Text = "Registrarse";
             button2.UseVisualStyleBackColor = false;
@@ -85,30 +107,31 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 20F);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(72, 76);
+            label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Segoe UI Semibold", 21F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(24, 24);
             label1.Name = "label1";
-            label1.Size = new Size(288, 37);
+            label1.Size = new Size(372, 62);
             label1.TabIndex = 0;
             label1.Text = "Bienvenido a CarCheck";
-            label1.Click += label1_Click;
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FrmInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveBorder;
+            BackColor = Color.FromArgb(225, 232, 241);
             ClientSize = new Size(824, 428);
             Controls.Add(panel1);
             DoubleBuffered = true;
-            ForeColor = Color.White;
-            ImeMode = ImeMode.AlphaFull;
+            MinimumSize = new Size(840, 470);
             Name = "FrmInicio";
-            Text = "FrmInicio";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "CarCheck - Inicio";
+            Resize += FrmInicio_Resize;
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+  
             panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -120,5 +143,6 @@
         private Button button1;
         private Button button2;
         private Label label1;
+        private Label label2;
     }
 }

@@ -18,41 +18,57 @@ namespace carCheckFront
         public FrmRegistro()
         {
             InitializeComponent();
+            Load += FrmRegistro_Load;
+            Resize += FrmRegistro_Resize;
         }
 
-        private void button1_Click(object sender, EventArgs e) 
+        private void FrmRegistro_Load(object? sender, EventArgs e)
         {
-                Usuario nuevo = new Usuario
-                {
-                    NombreUsuario = textBox1.Text,
-                    Email = textBox2.Text,
-                    PasswordHash = textBox3.Text
-                };
+            CentrarPanel();
+        }
 
-                // ✅ Creamos la instancia
-                UsuarioNegocio negocio = new UsuarioNegocio();
 
-                if (negocio.Registrar(nuevo))
-                {
-                    MessageBox.Show("Usuario registrado con éxito");
-                    this.Close();
-                    FrmLogin login = new FrmLogin();
-                    login.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Complete los campos");
-                }
+        private void FrmRegistro_Resize(object? sender, EventArgs e)
+        {
+            CentrarPanel();
+        }
+
+
+        private void CentrarPanel()
+        {
+            panel1.Left = (ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (ClientSize.Height - panel1.Height) / 2;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Usuario nuevo = new Usuario
+            {
+                NombreUsuario = textBox1.Text,
+                Email = textBox2.Text,
+                PasswordHash = textBox3.Text
+            };
+
+            UsuarioNegocio negocio = new UsuarioNegocio();
+
+            if (negocio.Registrar(nuevo))
+            {
+                MessageBox.Show("Usuario registrado con éxito");
+                Close();
+                FrmLogin login = new FrmLogin();
+                login.Show();
             }
-            
-
-
+            else
+            {
+                Close();
+                MessageBox.Show("Complete los campos");
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
-            {
-            this.Close();
+        {
+            Close();
             FrmInicio inicio = new FrmInicio();
             inicio.Show();
-            }
+        }
     }
 }
