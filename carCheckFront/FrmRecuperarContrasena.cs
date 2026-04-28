@@ -4,7 +4,7 @@ namespace carCheckFront
 {
     public partial class FrmRecuperarContrasena : Form
     {
-        public FrmRecuperarContrasena()
+      public FrmRecuperarContrasena()
         {
             InitializeComponent();
         }
@@ -28,6 +28,12 @@ namespace carCheckFront
             }
 
             MessageBox.Show(mensaje, "Recuperación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
