@@ -39,9 +39,11 @@ namespace carCheckFront
             button1 = new Button();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
+            label6 = new Label();
             textBox1 = new TextBox();
             label3 = new Label();
             label2 = new Label();
+            textBox4 = new TextBox();
             label5 = new Label();
             label1 = new Label();
             panel1.SuspendLayout();
@@ -54,11 +56,13 @@ namespace carCheckFront
             panel1.Controls.Add(label4);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(textBox3);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
+            panel1.Controls.Add(textBox4);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(31, 26);
@@ -84,7 +88,7 @@ namespace carCheckFront
             button2.FlatAppearance.BorderColor = Color.FromArgb(106, 125, 143);
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(231, 246);
+            button2.Location = new Point(239, 261);
             button2.Name = "button2";
             button2.Size = new Size(108, 32);
             button2.TabIndex = 8;
@@ -98,7 +102,7 @@ namespace carCheckFront
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(115, 246);
+            button1.Location = new Point(117, 261);
             button1.Name = "button1";
             button1.Size = new Size(108, 32);
             button1.TabIndex = 7;
@@ -142,6 +146,17 @@ namespace carCheckFront
             label3.TabIndex = 2;
             label3.Text = "Contraseña:";
             // 
+            // label6
+            // 
+            label6 = new Label();
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 10F);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(24, 221);
+            label6.Name = "labelPin";
+            label6.Size = new Size(110, 19);
+            label6.TabIndex = 3;
+            label6.Text = "PIN de seguridad:";
             // label2
             // 
             label2.AutoSize = true;
@@ -152,6 +167,15 @@ namespace carCheckFront
             label2.Size = new Size(124, 19);
             label2.TabIndex = 1;
             label2.Text = "Correo electrónico:";
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = Color.FromArgb(239, 244, 250);
+            textBox4.Location = new Point(159, 221);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(180, 23);
+            textBox4.TabIndex = 7;
+            textBox4.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -174,6 +198,7 @@ namespace carCheckFront
             label1.Size = new Size(95, 30);
             label1.TabIndex = 0;
             label1.Text = "Registro";
+            // 
             // 
             // FrmRegistro
             // 
@@ -204,5 +229,7 @@ namespace carCheckFront
         private Button button1;
         private Label label4;
         private Label label5;
+        private TextBox textBox4;
+        private Control label6;
     }
 }

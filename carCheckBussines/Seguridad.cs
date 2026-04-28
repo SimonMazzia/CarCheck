@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
+
 namespace carCheckBussines
 {
     public static class Seguridad
     {
-         public static string HashearPassword(string PasswordHash)
+        public static object BCrypt { get; private set; }
+
+        public static string HashearPassword(string PasswordHash)
             {
               using (SHA256 sha256 = SHA256.Create())
                {
@@ -23,6 +26,12 @@ namespace carCheckBussines
                 }
                     return builder.ToString();
                 }
+
             }
+        public static bool VerificarPassword(string input, string hashGuardado)
+        {
+            string hashInput = HashearPassword(input);
+            return hashInput == hashGuardado;
         }
+    }
     }

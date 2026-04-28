@@ -48,5 +48,28 @@ namespace carCheckData
                 return true;
             }
         }
+        public bool ConfigurarPin(string email, string pinHash)
+        {
+            using (var db = new CarCheckDbContext())
+            {
+                var usuario = db.Usuarios.FirstOrDefault(u => u.Email == email);
+                if (usuario == null)
+                
+                    return false;
+                
+
+                if  (!string.IsNullOrEmpty(usuario.PinHash))
+                
+                    return false;
+
+
+                usuario.PinHash = pinHash;
+                db.SaveChanges();
+
+                return true;
+
+                }
+            }
+        }
     } 
-}
+

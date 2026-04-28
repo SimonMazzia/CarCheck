@@ -1,6 +1,7 @@
 ﻿using carCheckData;
 using carCheckEntities;
 using carCheckServicios;
+using System.Net.NetworkInformation;
 
 namespace carCheckBussines
 {
@@ -11,17 +12,25 @@ namespace carCheckBussines
         public bool Registrar(Usuario usuario)
         {
             if (string.IsNullOrWhiteSpace(usuario.NombreUsuario) ||
-             string.IsNullOrWhiteSpace(usuario.Email) ||
-             string.IsNullOrWhiteSpace(usuario.PasswordHash))
+                string.IsNullOrWhiteSpace(usuario.Email) ||
+                string.IsNullOrWhiteSpace(usuario.PasswordHash) ||
+                string.IsNullOrWhiteSpace(usuario.PinHash))
             {
                 return false;
             }
-            usuario.PasswordHash = Seguridad.HashearPassword(usuario.PasswordHash);
-            using (var db = new CarCheckDbContext())
+
+            if (usuario.PinHash.Length < 4)
             {
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
+                return false;
             }
+
+            // 🔐 Hashear password
+            usuario.PasswordHash = Seguridad.HashearPassword(usuario.PasswordHash);
+
+            // 🔐 Hashear PIN
+            usuario.PinHash = Seguridad.HashearPassword(usuario.PinHash);
+
+            usuarioDatos.Registrar(usuario);
 
             return true;
         }
@@ -40,6 +49,12 @@ namespace carCheckBussines
                 mensaje= "Debes ingresar un correo electrónico.";
                 return false;
             }
+            if (string.IsNullOrWhiteSpace(pin))
+            {
+                mensaje = "Debes ingresar el PIN.";
+                return false;
+            }
+
 
             if (string.IsNullOrWhiteSpace(nuevaContrasena) || string.IsNullOrWhiteSpace(confirmacionContrasena))
             {
@@ -62,7 +77,17 @@ namespace carCheckBussines
                 mensaje = "No se encontró un usuario con ese correo electrónico.";
                 return false;
             }
-            
+
+            // 🔐 VALIDAR PIN
+            bool pinValido = Seguridad.VerificarPassword(pin, usuario.PinHash);
+
+            if (!pinValido)
+            {
+                mensaje = "PIN incorrecto.";
+                return false;
+            }
+
+
             string nuevaContrasenaHasheada = Seguridad.HashearPassword(nuevaContrasena);
             bool actualizada = usuarioDatos.ActualizarPassword(email, nuevaContrasenaHasheada);
             if (!actualizada)
@@ -72,6 +97,29 @@ namespace carCheckBussines
             }
             mensaje= "Contraseña actualizada exitosamente.";
             return true;
+
+        }
+
+        public bool ConfigurarPin(string email, string pin, out string mensaje)
+        {
+            mensaje = "";
+            if (string.IsNullOrWhiteSpace(pin) || pin.Length < 4)
+            {
+                mensaje = "El PIN debe tener al menos 4 caracteres.";
+                return false;
+            }
+            var usuario = usuarioDatos.ExisteEmail(email);
+            if(usuario == false)
+            {
+                mensaje = "No se encontró un usuario con ese correo electrónico.";
+                return false;
+
+            }
+            if (!string.IsNullOrEmpty(usuario.PinHash))
+            {
+                mensaje= "El PIN ya está configurado para este usuario.";
+                return false;
+            }
 
         }
 

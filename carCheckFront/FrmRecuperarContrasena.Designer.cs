@@ -18,6 +18,8 @@
         private TextBox txtConfirmarContrasena;
         private Button btnActualizar;
         private Button btnCancelar;
+        private Label lblPin;
+        private TextBox txtPin;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -47,7 +49,9 @@
             lblNueva = new Label();
             lblConfirmar = new Label();
             txtEmail = new TextBox();
+            txtPin = new TextBox();
             txtNuevaContrasena = new TextBox();
+            lblPin = new Label();
             txtConfirmarContrasena = new TextBox();
             btnActualizar = new Button();
             btnCancelar = new Button();
@@ -62,7 +66,9 @@
             panel1.Controls.Add(lblEmail);
             panel1.Controls.Add(lblNueva);
             panel1.Controls.Add(lblConfirmar);
+            panel1.Controls.Add(txtPin);
             panel1.Controls.Add(txtEmail);
+            panel1.Controls.Add(lblPin);
             panel1.Controls.Add(txtNuevaContrasena);
             panel1.Controls.Add(txtConfirmarContrasena);
             panel1.Controls.Add(btnActualizar);
@@ -85,6 +91,18 @@
             lblSubtitulo.TabIndex = 9;
             lblSubtitulo.Text = "Actualizá tu contraseña de forma segura";
             // 
+            // 
+            // lblPin
+            // 
+            
+            lblPin.AutoSize = true;
+            lblPin.Font = new Font("Segoe UI", 10F);
+            lblPin.ForeColor = Color.White;
+            lblPin.Location = new Point(24, 140); // ajustá según tu layout
+            lblPin.Name = "labelPin";
+            lblPin.Size = new Size(110, 19);
+            lblPin.TabIndex = 3;
+            lblPin.Text = "PIN de seguridad:";
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
@@ -118,6 +136,16 @@
             lblNueva.TabIndex = 1;
             lblNueva.Text = "Nueva contraseña:";
             // 
+            // 
+            // textBoxPin
+            // 
+            txtPin = new TextBox();
+            txtPin.BackColor = Color.FromArgb(239, 244, 250);
+            txtPin.Location = new Point(159, 140);
+            txtPin.Name = "textBoxPin";
+            txtPin.Size = new Size(180, 23);
+            txtPin.TabIndex = 4;
+            txtPin.UseSystemPasswordChar = true;
             // lblConfirmar
             // 
             lblConfirmar.AutoSize = true;
