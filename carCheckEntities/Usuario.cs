@@ -22,7 +22,7 @@ public class Usuario
     // Relación uno a muchos
     public ICollection<Vehiculo> Vehiculos { get; set; } = new List<Vehiculo>();
 
-    public string PinHash { get; set; }
+    public required string PinHash { get; set; }
 
 
 }

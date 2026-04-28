@@ -41,7 +41,7 @@ namespace carCheckBussines
             return usuarioDatos.Login(email, passwordHasheada);
         }
 
-        public bool RecuperarContrasena(string email, string nuevaContrasena, string confirmacionContrasena, out string mensaje)
+        public bool RecuperarContrasena(string email, string pin, string nuevaContrasena, string confirmacionContrasena, out string mensaje)
         {
             mensaje = string.Empty;
             if (string.IsNullOrWhiteSpace(email))
@@ -77,6 +77,14 @@ namespace carCheckBussines
                 mensaje = "No se encontró un usuario con ese correo electrónico.";
                 return false;
             }
+            var usuario = usuarioDatos.ObtenerPorEmail(email);
+
+            if (usuario == null)
+            {
+                mensaje = "No se encontró un usuario con ese correo.";
+                return false;
+            }
+
 
             // 🔐 VALIDAR PIN
             bool pinValido = Seguridad.VerificarPassword(pin, usuario.PinHash);
@@ -103,24 +111,38 @@ namespace carCheckBussines
         public bool ConfigurarPin(string email, string pin, out string mensaje)
         {
             mensaje = "";
-            if (string.IsNullOrWhiteSpace(pin) || pin.Length < 4)
-            {
-                mensaje = "El PIN debe tener al menos 4 caracteres.";
-                return false;
-            }
-            var usuario = usuarioDatos.ExisteEmail(email);
-            if(usuario == false)
-            {
-                mensaje = "No se encontró un usuario con ese correo electrónico.";
-                return false;
 
+            if (string.IsNullOrWhiteSpace(pin))
+            {
+                mensaje = "PIN inválido";
+                return false;
             }
+
+            var usuario = usuarioDatos.ObtenerPorEmail(email);
+
+            if (usuario == null)
+            {
+                mensaje = "Usuario no encontrado";
+                return false;
+            }
+
             if (!string.IsNullOrEmpty(usuario.PinHash))
             {
-                mensaje= "El PIN ya está configurado para este usuario.";
+                mensaje = "El usuario ya tiene un PIN configurado";
+                return false; // 👈 clave
+            }
+
+            string hash = Seguridad.HashearPassword(pin);
+            bool ok = usuarioDatos.ConfigurarPin(email, hash);
+
+            if (!ok)
+            {
+                mensaje = "Error al guardar el PIN";
                 return false;
             }
 
+            mensaje = "PIN configurado correctamente";
+            return true;
         }
 
     }

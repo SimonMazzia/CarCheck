@@ -37,9 +37,9 @@ namespace carCheckFront
             label4 = new Label();
             button2 = new Button();
             button1 = new Button();
+            label6 = new Label();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
-            label6 = new Label();
             textBox1 = new TextBox();
             label3 = new Label();
             label2 = new Label();
@@ -88,7 +88,7 @@ namespace carCheckFront
             button2.FlatAppearance.BorderColor = Color.FromArgb(106, 125, 143);
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(239, 261);
+            button2.Location = new Point(239, 271);
             button2.Name = "button2";
             button2.Size = new Size(108, 32);
             button2.TabIndex = 8;
@@ -102,13 +102,24 @@ namespace carCheckFront
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(117, 261);
+            button1.Location = new Point(114, 271);
             button1.Name = "button1";
             button1.Size = new Size(108, 32);
             button1.TabIndex = 7;
             button1.Text = "Registrar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 10F);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(24, 221);
+            label6.Name = "label6";
+            label6.Size = new Size(117, 19);
+            label6.TabIndex = 3;
+            label6.Text = "PIN de seguridad:";
             // 
             // textBox3
             // 
@@ -146,17 +157,6 @@ namespace carCheckFront
             label3.TabIndex = 2;
             label3.Text = "Contraseña:";
             // 
-            // label6
-            // 
-            label6 = new Label();
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10F);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(24, 221);
-            label6.Name = "labelPin";
-            label6.Size = new Size(110, 19);
-            label6.TabIndex = 3;
-            label6.Text = "PIN de seguridad:";
             // label2
             // 
             label2.AutoSize = true;
@@ -199,7 +199,6 @@ namespace carCheckFront
             label1.TabIndex = 0;
             label1.Text = "Registro";
             // 
-            // 
             // FrmRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -230,6 +229,6 @@ namespace carCheckFront
         private Label label4;
         private Label label5;
         private TextBox textBox4;
-        private Control label6;
+        private Label label6;
     }
 }

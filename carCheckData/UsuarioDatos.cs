@@ -33,6 +33,14 @@ namespace carCheckData
                 return db.Usuarios.Any(u => u.Email == email);
             }
         }
+
+        public Usuario ObtenerPorEmail(string email)
+        {
+            using (var db = new CarCheckDbContext())
+            {
+                return db.Usuarios.FirstOrDefault(u => u.Email == email);
+            }
+        }
         public bool ActualizarPassword(string email, string nuevaContrasenaHasheada)
         {
             using (var db = new CarCheckDbContext())

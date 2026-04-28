@@ -14,6 +14,7 @@ namespace carCheckFront
             UsuarioNegocio negocio = new UsuarioNegocio();
             bool ok = negocio.RecuperarContrasena(
                 txtEmail.Text.Trim(),
+                txtPin.Text, // 👈 nuevo
                 txtNuevaContrasena.Text,
                 txtConfirmarContrasena.Text,
                 out string mensaje);
