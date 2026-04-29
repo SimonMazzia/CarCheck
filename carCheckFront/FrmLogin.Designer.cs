@@ -76,7 +76,7 @@
             button3.FlatAppearance.BorderColor = Color.FromArgb(106, 125, 143);
             button3.FlatStyle = FlatStyle.Flat;
             button3.ForeColor = Color.White;
-            button3.Location = new Point(132, 204);
+            button3.Location = new Point(142, 203);
             button3.Name = "button3";
             button3.Size = new Size(205, 30);
             button3.TabIndex = 6;
@@ -90,7 +90,7 @@
             button2.FlatAppearance.BorderColor = Color.FromArgb(106, 125, 143);
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(243, 167);
+            button2.Location = new Point(253, 167);
             button2.Name = "button2";
             button2.Size = new Size(94, 30);
             button2.TabIndex = 5;
@@ -104,7 +104,7 @@
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(132, 167);
+            button1.Location = new Point(142, 168);
             button1.Name = "button1";
             button1.Size = new Size(104, 30);
             button1.TabIndex = 4;
@@ -115,7 +115,7 @@
             // textBox2
             // 
             textBox2.BackColor = Color.FromArgb(239, 244, 250);
-            textBox2.Location = new Point(132, 123);
+            textBox2.Location = new Point(142, 123);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(205, 23);
             textBox2.TabIndex = 3;
@@ -129,9 +129,9 @@
             label4.ForeColor = Color.White;
             label4.Location = new Point(2, 88);
             label4.Name = "label4";
-            label4.Size = new Size(124, 19);
+            label4.Size = new Size(134, 19);
             label4.TabIndex = 8;
-            label4.Text = "Correo electrónico:";
+            label4.Text = "Correo electrónico *:";
             // 
             // label2
             // 
@@ -140,14 +140,14 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(23, 123);
             label2.Name = "label2";
-            label2.Size = new Size(82, 19);
+            label2.Size = new Size(92, 19);
             label2.TabIndex = 2;
-            label2.Text = "Contraseña:";
+            label2.Text = "Contraseña *:";
             // 
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(239, 244, 250);
-            textBox1.Location = new Point(132, 87);
+            textBox1.Location = new Point(142, 87);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(205, 23);
             textBox1.TabIndex = 1;

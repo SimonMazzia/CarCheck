@@ -76,7 +76,7 @@ namespace carCheckFront
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F);
             label4.ForeColor = Color.FromArgb(181, 195, 211);
-            label4.Location = new Point(24, 51);
+            label4.Location = new Point(24, 54);
             label4.Name = "label4";
             label4.Size = new Size(198, 15);
             label4.TabIndex = 9;
@@ -88,7 +88,7 @@ namespace carCheckFront
             button2.FlatAppearance.BorderColor = Color.FromArgb(106, 125, 143);
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(239, 271);
+            button2.Location = new Point(248, 271);
             button2.Name = "button2";
             button2.Size = new Size(108, 32);
             button2.TabIndex = 8;
@@ -102,7 +102,7 @@ namespace carCheckFront
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(114, 271);
+            button1.Location = new Point(134, 271);
             button1.Name = "button1";
             button1.Size = new Size(108, 32);
             button1.TabIndex = 7;
@@ -117,14 +117,14 @@ namespace carCheckFront
             label6.ForeColor = Color.White;
             label6.Location = new Point(24, 221);
             label6.Name = "label6";
-            label6.Size = new Size(117, 19);
+            label6.Size = new Size(127, 19);
             label6.TabIndex = 3;
-            label6.Text = "PIN de seguridad:";
+            label6.Text = "PIN de seguridad *:";
             // 
             // textBox3
             // 
             textBox3.BackColor = Color.FromArgb(239, 244, 250);
-            textBox3.Location = new Point(159, 180);
+            textBox3.Location = new Point(167, 181);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(180, 23);
             textBox3.TabIndex = 6;
@@ -133,7 +133,7 @@ namespace carCheckFront
             // textBox2
             // 
             textBox2.BackColor = Color.FromArgb(239, 244, 250);
-            textBox2.Location = new Point(159, 139);
+            textBox2.Location = new Point(167, 139);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(180, 23);
             textBox2.TabIndex = 5;
@@ -141,7 +141,7 @@ namespace carCheckFront
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(239, 244, 250);
-            textBox1.Location = new Point(159, 98);
+            textBox1.Location = new Point(167, 98);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(180, 23);
             textBox1.TabIndex = 4;
@@ -153,9 +153,9 @@ namespace carCheckFront
             label3.ForeColor = Color.White;
             label3.Location = new Point(24, 181);
             label3.Name = "label3";
-            label3.Size = new Size(82, 19);
+            label3.Size = new Size(92, 19);
             label3.TabIndex = 2;
-            label3.Text = "Contraseña:";
+            label3.Text = "Contraseña *:";
             // 
             // label2
             // 
@@ -164,14 +164,14 @@ namespace carCheckFront
             label2.ForeColor = Color.White;
             label2.Location = new Point(23, 139);
             label2.Name = "label2";
-            label2.Size = new Size(124, 19);
+            label2.Size = new Size(134, 19);
             label2.TabIndex = 1;
-            label2.Text = "Correo electrónico:";
+            label2.Text = "Correo electrónico *:";
             // 
             // textBox4
             // 
             textBox4.BackColor = Color.FromArgb(239, 244, 250);
-            textBox4.Location = new Point(159, 221);
+            textBox4.Location = new Point(167, 221);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(180, 23);
             textBox4.TabIndex = 7;
@@ -184,16 +184,16 @@ namespace carCheckFront
             label5.ForeColor = Color.White;
             label5.Location = new Point(24, 98);
             label5.Name = "label5";
-            label5.Size = new Size(130, 19);
+            label5.Size = new Size(140, 19);
             label5.TabIndex = 2;
-            label5.Text = "Nombre de usuario:";
+            label5.Text = "Nombre de usuario *:";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(23, 21);
+            label1.Location = new Point(21, 20);
             label1.Name = "label1";
             label1.Size = new Size(95, 30);
             label1.TabIndex = 0;

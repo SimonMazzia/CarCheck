@@ -84,7 +84,7 @@ namespace carCheckFront
             lblPin.Font = new Font("Segoe UI", 10F);
             lblPin.ForeColor = Color.White;
             lblPin.Location = new Point(24, 136);
-            lblPin.Text = "PIN de seguridad:";
+            lblPin.Text = "PIN de seguridad *:";
 
             // txtPin
             txtPin.BackColor = Color.FromArgb(239, 244, 250);
@@ -97,7 +97,7 @@ namespace carCheckFront
             lblNueva.Font = new Font("Segoe UI", 10F);
             lblNueva.ForeColor = Color.White;
             lblNueva.Location = new Point(24, 176);
-            lblNueva.Text = "Nueva contraseña:";
+            lblNueva.Text = "Nueva contraseña *:";
 
             // txtNuevaContrasena
             txtNuevaContrasena.BackColor = Color.FromArgb(239, 244, 250);
@@ -110,7 +110,7 @@ namespace carCheckFront
             lblConfirmar.Font = new Font("Segoe UI", 10F);
             lblConfirmar.ForeColor = Color.White;
             lblConfirmar.Location = new Point(24, 216);
-            lblConfirmar.Text = "Confirmar contraseña:";
+            lblConfirmar.Text = "Confirmar contraseña *:";
 
             // txtConfirmarContrasena
             txtConfirmarContrasena.BackColor = Color.FromArgb(239, 244, 250);
