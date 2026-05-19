@@ -58,8 +58,9 @@ namespace carCheckFront
             {
                 MessageBox.Show($"Bienvenido {user.NombreUsuario}");
                 FrmPrincipal frm = new FrmPrincipal(user);
-                frm.Show();
                 Hide();
+                frm.ShowDialog();
+                Show();
             }
             else
             {
