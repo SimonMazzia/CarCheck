@@ -30,8 +30,18 @@
         {
             lblBienvenida = new Label();
             panelMenu = new Panel();
+            panelSeparador = new Panel();
+            btnCerrar = new Button();
+            btnConfiguracion = new Button();
+            btnHistorial = new Button();
+            btnServicios = new Button();
+            btnVehiculos = new Button();
+            btnInicio = new Button();
+            lblSubtitulo = new Label();
+            lblLogo = new Label();
             panelTop = new Panel();
             panelContenido = new Panel();
+            panelMenu.SuspendLayout();
             SuspendLayout();
             // 
             // lblBienvenida
@@ -46,11 +56,143 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.FromArgb(24, 34, 46);
+            panelMenu.Controls.Add(panelSeparador);
+            panelMenu.Controls.Add(btnCerrar);
+            panelMenu.Controls.Add(btnConfiguracion);
+            panelMenu.Controls.Add(btnHistorial);
+            panelMenu.Controls.Add(btnServicios);
+            panelMenu.Controls.Add(btnVehiculos);
+            panelMenu.Controls.Add(btnInicio);
+            panelMenu.Controls.Add(lblSubtitulo);
+            panelMenu.Controls.Add(lblLogo);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 15);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(220, 435);
+            panelMenu.Size = new Size(220, 629);
             panelMenu.TabIndex = 1;
+            // 
+            // panelSeparador
+            // 
+            panelSeparador.BackColor = Color.Gray;
+            panelSeparador.Dock = DockStyle.Bottom;
+            panelSeparador.Location = new Point(0, 583);
+            panelSeparador.Name = "panelSeparador";
+            panelSeparador.Size = new Size(220, 1);
+            panelSeparador.TabIndex = 0;
+            // 
+            // btnCerrar
+            // 
+            btnCerrar.BackColor = Color.FromArgb(52, 73, 94);
+            btnCerrar.Cursor = Cursors.Hand;
+            btnCerrar.Dock = DockStyle.Bottom;
+            btnCerrar.FlatAppearance.BorderSize = 0;
+            btnCerrar.FlatStyle = FlatStyle.Flat;
+            btnCerrar.Font = new Font("Segoe UI", 10F);
+            btnCerrar.ForeColor = Color.White;
+            btnCerrar.Location = new Point(0, 584);
+            btnCerrar.Name = "btnCerrar";
+            btnCerrar.Size = new Size(220, 45);
+            btnCerrar.TabIndex = 4;
+            btnCerrar.Text = "Cerrar Sesion";
+            btnCerrar.UseVisualStyleBackColor = true;
+            // 
+            // btnConfiguracion
+            // 
+            btnConfiguracion.BackColor = Color.FromArgb(52, 73, 94);
+            btnConfiguracion.Cursor = Cursors.Hand;
+            btnConfiguracion.FlatAppearance.BorderSize = 0;
+            btnConfiguracion.FlatStyle = FlatStyle.Flat;
+            btnConfiguracion.Font = new Font("Segoe UI", 10F);
+            btnConfiguracion.ForeColor = Color.White;
+            btnConfiguracion.Location = new Point(20, 305);
+            btnConfiguracion.Name = "btnConfiguracion";
+            btnConfiguracion.Size = new Size(180, 45);
+            btnConfiguracion.TabIndex = 3;
+            btnConfiguracion.Text = "Configuracion";
+            btnConfiguracion.UseVisualStyleBackColor = true;
+            // 
+            // btnHistorial
+            // 
+            btnHistorial.BackColor = Color.FromArgb(52, 73, 94);
+            btnHistorial.Cursor = Cursors.Hand;
+            btnHistorial.FlatAppearance.BorderSize = 0;
+            btnHistorial.FlatStyle = FlatStyle.Flat;
+            btnHistorial.Font = new Font("Segoe UI", 10F);
+            btnHistorial.ForeColor = Color.White;
+            btnHistorial.Location = new Point(20, 254);
+            btnHistorial.Name = "btnHistorial";
+            btnHistorial.Size = new Size(180, 45);
+            btnHistorial.TabIndex = 2;
+            btnHistorial.Text = "Historial";
+            btnHistorial.UseVisualStyleBackColor = true;
+            // 
+            // btnServicios
+            // 
+            btnServicios.BackColor = Color.FromArgb(52, 73, 94);
+            btnServicios.Cursor = Cursors.Hand;
+            btnServicios.FlatAppearance.BorderSize = 0;
+            btnServicios.FlatStyle = FlatStyle.Flat;
+            btnServicios.Font = new Font("Segoe UI", 10F);
+            btnServicios.ForeColor = Color.White;
+            btnServicios.Location = new Point(20, 203);
+            btnServicios.Name = "btnServicios";
+            btnServicios.Size = new Size(180, 45);
+            btnServicios.TabIndex = 2;
+            btnServicios.Text = "Servicios";
+            btnServicios.UseVisualStyleBackColor = true;
+            // 
+            // btnVehiculos
+            // 
+            btnVehiculos.BackColor = Color.FromArgb(52, 73, 94);
+            btnVehiculos.Cursor = Cursors.Hand;
+            btnVehiculos.FlatAppearance.BorderSize = 0;
+            btnVehiculos.FlatStyle = FlatStyle.Flat;
+            btnVehiculos.Font = new Font("Segoe UI", 10F);
+            btnVehiculos.ForeColor = Color.White;
+            btnVehiculos.Location = new Point(20, 152);
+            btnVehiculos.Name = "btnVehiculos";
+            btnVehiculos.Size = new Size(180, 45);
+            btnVehiculos.TabIndex = 2;
+            btnVehiculos.Text = "Vehículos";
+            btnVehiculos.UseVisualStyleBackColor = true;
+            // 
+            // btnInicio
+            // 
+            btnInicio.BackColor = Color.FromArgb(52, 73, 94);
+            btnInicio.Cursor = Cursors.Hand;
+            btnInicio.FlatAppearance.BorderSize = 0;
+            btnInicio.FlatStyle = FlatStyle.Flat;
+            btnInicio.Font = new Font("Segoe UI", 10F);
+            btnInicio.ForeColor = Color.White;
+            btnInicio.Location = new Point(20, 101);
+            btnInicio.Name = "btnInicio";
+            btnInicio.Size = new Size(180, 45);
+            btnInicio.TabIndex = 2;
+            btnInicio.Text = "Inicio";
+            btnInicio.UseVisualStyleBackColor = true;
+            // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.AutoSize = true;
+            lblSubtitulo.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            lblSubtitulo.ForeColor = Color.FromArgb(181, 195, 211);
+            lblSubtitulo.Location = new Point(30, 68);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(98, 15);
+            lblSubtitulo.TabIndex = 1;
+            lblSubtitulo.Text = "Gestión vehicular";
+            // 
+            // lblLogo
+            // 
+            lblLogo.AutoSize = true;
+            lblLogo.BackColor = Color.Transparent;
+            lblLogo.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
+            lblLogo.ForeColor = Color.White;
+            lblLogo.Location = new Point(30, 30);
+            lblLogo.Name = "lblLogo";
+            lblLogo.Size = new Size(132, 37);
+            lblLogo.TabIndex = 0;
+            lblLogo.Text = "CarCheck";
             // 
             // panelTop
             // 
@@ -58,7 +200,7 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(220, 15);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(580, 60);
+            panelTop.Size = new Size(1038, 60);
             panelTop.TabIndex = 2;
             // 
             // panelContenido
@@ -67,14 +209,14 @@
             panelContenido.Dock = DockStyle.Fill;
             panelContenido.Location = new Point(220, 75);
             panelContenido.Name = "panelContenido";
-            panelContenido.Size = new Size(580, 375);
+            panelContenido.Size = new Size(1038, 569);
             panelContenido.TabIndex = 3;
             // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1258, 644);
             Controls.Add(panelContenido);
             Controls.Add(panelTop);
             Controls.Add(panelMenu);
@@ -83,6 +225,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmPrincipal";
             WindowState = FormWindowState.Maximized;
+            Load += FrmPrincipal_Load_1;
+            panelMenu.ResumeLayout(false);
+            panelMenu.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -93,5 +238,14 @@
         private Panel panelMenu;
         private Panel panelTop;
         private Panel panelContenido;
+        private Label lblLogo;
+        private Label lblSubtitulo;
+        private Button btnInicio;
+        private Button btnVehiculos;
+        private Button btnServicios;
+        private Button btnHistorial;
+        private Button btnConfiguracion;
+        private Button btnCerrar;
+        private Panel panelSeparador;
     }
 }

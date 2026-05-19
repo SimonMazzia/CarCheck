@@ -26,17 +26,12 @@ namespace carCheckFront
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            lblBienvenida.Text = $"Bienvenido/a a CarCheck.. Nos emociona tu llegada, {_usuario.NombreUsuario}";
-            lblBienvenida.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-            lblBienvenida.Visible = true;
-            Timer timer = new Timer();
-            timer.Interval = 5000; // 5 segundos
-            timer.Tick += (s, ev) =>
-            {
-                lblBienvenida.Visible = false;
-                timer.Stop();
-            };
-            timer.Start();
+
+        }
+
+        private void FrmPrincipal_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
