@@ -33,6 +33,14 @@ namespace carCheckFront
         {
 
         }
+
+        private void btnVehiculos_Click_1(object sender, EventArgs e)
+        {
+            frmVehiculos frm= new frmVehiculos();
+            frm.ShowDialog();
+
+
+        }
     }
 }
 

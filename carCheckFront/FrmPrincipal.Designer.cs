@@ -155,6 +155,7 @@
             btnVehiculos.TabIndex = 2;
             btnVehiculos.Text = "Vehículos";
             btnVehiculos.UseVisualStyleBackColor = true;
+            btnVehiculos.Click += btnVehiculos_Click_1;
             // 
             // btnInicio
             // 
