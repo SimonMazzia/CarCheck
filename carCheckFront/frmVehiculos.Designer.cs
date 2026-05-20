@@ -127,6 +127,7 @@
             btnEliminar.TabIndex = 14;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnModificar
             // 
@@ -141,6 +142,7 @@
             btnModificar.TabIndex = 13;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = false;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnAgregar
             // 
@@ -156,6 +158,7 @@
             btnAgregar.TabIndex = 12;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // numericUpDownKm
             // 

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using carCheckBussines;
+using carCheckEntities;
+using carCheckServicios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using carCheckBussines;
-using carCheckEntities;
 
 namespace carCheckFront
 {
@@ -52,6 +53,7 @@ namespace carCheckFront
             string password = textBox2.Text.Trim();
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             Usuario user = usuarioNegocio.Login(email, password);
+            Sesion.UsuarioActual = user;
 
 
             if (user != null)

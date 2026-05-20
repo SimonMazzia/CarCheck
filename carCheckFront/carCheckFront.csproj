@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\carCheckBussines\carCheckBussines.csproj" />
     <ProjectReference Include="..\carCheckEntities\carCheckEntities.csproj" />
+    <ProjectReference Include="..\carCheckServicios\carCheckServicios.csproj" />
   </ItemGroup>
 
 </Project>
