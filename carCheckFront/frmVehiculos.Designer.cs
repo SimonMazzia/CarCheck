@@ -31,14 +31,28 @@
             panelTop = new Panel();
             label1 = new Label();
             panelFormulario = new Panel();
+            btnLimpiar = new Button();
+            btnEliminar = new Button();
+            btnModificar = new Button();
+            btnAgregar = new Button();
+            numericUpDownKm = new NumericUpDown();
+            numericUpDownAnio = new NumericUpDown();
+            txtPatente = new TextBox();
+            txtModelo = new TextBox();
+            txtMarca = new TextBox();
             lblKilometraje = new Label();
             lblAño = new Label();
             lblPatente = new Label();
             lblModelo = new Label();
             lblMarca = new Label();
             panelTabla = new Panel();
+            dgvVehiculos = new DataGridView();
             panelTop.SuspendLayout();
             panelFormulario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownKm).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAnio).BeginInit();
+            panelTabla.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvVehiculos).BeginInit();
             SuspendLayout();
             // 
             // panelTop
@@ -65,6 +79,15 @@
             // panelFormulario
             // 
             panelFormulario.BackColor = Color.White;
+            panelFormulario.Controls.Add(btnLimpiar);
+            panelFormulario.Controls.Add(btnEliminar);
+            panelFormulario.Controls.Add(btnModificar);
+            panelFormulario.Controls.Add(btnAgregar);
+            panelFormulario.Controls.Add(numericUpDownKm);
+            panelFormulario.Controls.Add(numericUpDownAnio);
+            panelFormulario.Controls.Add(txtPatente);
+            panelFormulario.Controls.Add(txtModelo);
+            panelFormulario.Controls.Add(txtMarca);
             panelFormulario.Controls.Add(lblKilometraje);
             panelFormulario.Controls.Add(lblAño);
             panelFormulario.Controls.Add(lblPatente);
@@ -77,11 +100,108 @@
             panelFormulario.TabIndex = 3;
             panelFormulario.Paint += panelFormulario_Paint;
             // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.Silver;
+            btnLimpiar.Cursor = Cursors.Hand;
+            btnLimpiar.FlatAppearance.BorderSize = 0;
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
+            btnLimpiar.ForeColor = Color.White;
+            btnLimpiar.Location = new Point(840, 75);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(120, 38);
+            btnLimpiar.TabIndex = 15;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.BackColor = Color.Red;
+            btnEliminar.Cursor = Cursors.Hand;
+            btnEliminar.FlatAppearance.BorderSize = 0;
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.ForeColor = Color.White;
+            btnEliminar.Location = new Point(840, 25);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(120, 38);
+            btnEliminar.TabIndex = 14;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = false;
+            // 
+            // btnModificar
+            // 
+            btnModificar.BackColor = Color.FromArgb(64, 64, 64);
+            btnModificar.Cursor = Cursors.Hand;
+            btnModificar.FlatAppearance.BorderSize = 0;
+            btnModificar.FlatStyle = FlatStyle.Flat;
+            btnModificar.ForeColor = Color.White;
+            btnModificar.Location = new Point(700, 75);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(120, 38);
+            btnModificar.TabIndex = 13;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = false;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.BackColor = Color.FromArgb(0, 122, 204);
+            btnAgregar.Cursor = Cursors.Hand;
+            btnAgregar.FlatAppearance.BorderSize = 0;
+            btnAgregar.FlatStyle = FlatStyle.Flat;
+            btnAgregar.Font = new Font("Segoe UI", 9F);
+            btnAgregar.ForeColor = Color.White;
+            btnAgregar.Location = new Point(700, 25);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(120, 38);
+            btnAgregar.TabIndex = 12;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = false;
+            // 
+            // numericUpDownKm
+            // 
+            numericUpDownKm.Location = new Point(120, 126);
+            numericUpDownKm.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numericUpDownKm.Name = "numericUpDownKm";
+            numericUpDownKm.Size = new Size(120, 23);
+            numericUpDownKm.TabIndex = 11;
+            numericUpDownKm.ThousandsSeparator = true;
+            // 
+            // numericUpDownAnio
+            // 
+            numericUpDownAnio.Location = new Point(430, 73);
+            numericUpDownAnio.Maximum = new decimal(new int[] { 2100, 0, 0, 0 });
+            numericUpDownAnio.Minimum = new decimal(new int[] { 1950, 0, 0, 0 });
+            numericUpDownAnio.Name = "numericUpDownAnio";
+            numericUpDownAnio.Size = new Size(120, 23);
+            numericUpDownAnio.TabIndex = 10;
+            numericUpDownAnio.Value = new decimal(new int[] { 2026, 0, 0, 0 });
+            // 
+            // txtPatente
+            // 
+            txtPatente.Location = new Point(430, 28);
+            txtPatente.Name = "txtPatente";
+            txtPatente.Size = new Size(180, 23);
+            txtPatente.TabIndex = 7;
+            // 
+            // txtModelo
+            // 
+            txtModelo.Location = new Point(120, 73);
+            txtModelo.Name = "txtModelo";
+            txtModelo.Size = new Size(180, 23);
+            txtModelo.TabIndex = 6;
+            // 
+            // txtMarca
+            // 
+            txtMarca.Location = new Point(120, 28);
+            txtMarca.Name = "txtMarca";
+            txtMarca.Size = new Size(180, 23);
+            txtMarca.TabIndex = 5;
+            // 
             // lblKilometraje
             // 
             lblKilometraje.AutoSize = true;
             lblKilometraje.Font = new Font("Segoe UI", 10F);
-            lblKilometraje.Location = new Point(725, 61);
+            lblKilometraje.Location = new Point(30, 126);
             lblKilometraje.Name = "lblKilometraje";
             lblKilometraje.Size = new Size(77, 19);
             lblKilometraje.TabIndex = 4;
@@ -130,11 +250,29 @@
             // 
             // panelTabla
             // 
+            panelTabla.Controls.Add(dgvVehiculos);
             panelTabla.Dock = DockStyle.Fill;
             panelTabla.Location = new Point(0, 240);
             panelTabla.Name = "panelTabla";
             panelTabla.Size = new Size(1403, 401);
             panelTabla.TabIndex = 4;
+            // 
+            // dgvVehiculos
+            // 
+            dgvVehiculos.AllowUserToAddRows = false;
+            dgvVehiculos.BackgroundColor = Color.White;
+            dgvVehiculos.BorderStyle = BorderStyle.None;
+            dgvVehiculos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVehiculos.Dock = DockStyle.Fill;
+            dgvVehiculos.Location = new Point(0, 0);
+            dgvVehiculos.MultiSelect = false;
+            dgvVehiculos.Name = "dgvVehiculos";
+            dgvVehiculos.ReadOnly = true;
+            dgvVehiculos.RowHeadersVisible = false;
+            dgvVehiculos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVehiculos.Size = new Size(1403, 401);
+            dgvVehiculos.TabIndex = 0;
+            dgvVehiculos.CellContentClick += dgvVehiculos_CellContentClick;
             // 
             // frmVehiculos
             // 
@@ -154,6 +292,10 @@
             panelTop.PerformLayout();
             panelFormulario.ResumeLayout(false);
             panelFormulario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownKm).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAnio).EndInit();
+            panelTabla.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvVehiculos).EndInit();
             ResumeLayout(false);
             // 
         }
@@ -169,5 +311,15 @@
         private Label lblModelo;
         private Label lblMarca;
         private Label lblKilometraje;
+        private TextBox txtPatente;
+        private TextBox txtModelo;
+        private TextBox txtMarca;
+        private NumericUpDown numericUpDownKm;
+        private NumericUpDown numericUpDownAnio;
+        private DataGridView dgvVehiculos;
+        private Button btnLimpiar;
+        private Button btnEliminar;
+        private Button btnModificar;
+        private Button btnAgregar;
     }
 }

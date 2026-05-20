@@ -31,5 +31,10 @@ namespace carCheckFront
         {
 
         }
+
+        private void dgvVehiculos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
