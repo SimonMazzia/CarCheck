@@ -13,8 +13,14 @@ namespace carCheckBussines
         private readonly VehiculoDatos vehiculoDatos = new VehiculoDatos();
         public bool RegistrarVehiculo(Vehiculo vehiculo, out string mensaje)
         {
+            
             mensaje = string.Empty;
             //validaciones
+            if (vehiculoDatos.existePatente(vehiculo.Patente))
+            {
+                mensaje = "La patente ya existe. Por favor, ingrese una patente única.";
+                return false;
+            }
             if (string.IsNullOrWhiteSpace(vehiculo.Marca) || string.IsNullOrWhiteSpace(vehiculo.Modelo) || string.IsNullOrWhiteSpace(vehiculo.Patente))
             {
                 mensaje = "Marca, Modelo y Patente son campos obligatorios.";
@@ -24,10 +30,7 @@ namespace carCheckBussines
             mensaje = "Vehículo registrado exitosamente.";
             return true;
         }
-        public List<Vehiculo> ObtenerVehiculosPorUsuario(int usuarioId)
-        {
-            return vehiculoDatos.ObtenerVehiculosPorUsuario(usuarioId);
-        }
+        public List<Vehiculo> ObtenerVehiculosPorUsuario(int usuarioId) => vehiculoDatos.ObtenerVehiculosPorUsuario(usuarioId);
         public bool EliminarVehiculo(
             int id,
             out string mensaje)

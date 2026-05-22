@@ -8,22 +8,16 @@ namespace carCheckData.Migrations
     public partial class recuperarcontrase : Migration
     {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<string>(
+        protected override void Up(MigrationBuilder migrationBuilder) => migrationBuilder.AddColumn<string>(
                 name: "TokenRecuperacion",
                 table: "Usuarios",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
-        }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
+        protected override void Down(MigrationBuilder migrationBuilder) => migrationBuilder.DropColumn(
                 name: "TokenRecuperacion",
                 table: "Usuarios");
-        }
     }
 }

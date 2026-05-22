@@ -26,6 +26,13 @@ namespace carCheckData
 
 
         }
+        public bool existePatente(string patente)
+        {
+            using (var db= new CarCheckDbContext())
+            {
+                return db.Vehiculos.Any(v => v.Patente == patente);
+            }
+        }
         public bool eliminarVehiculo(int Id)
         {
             using (var db = new CarCheckDbContext())

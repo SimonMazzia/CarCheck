@@ -18,16 +18,9 @@ namespace carCheckFront
             Load += FrmInicio_Load;
         }
 
-        private void FrmInicio_Load(object? sender, EventArgs e)
-        {
-            CentrarPanelPrincipal();
-        }
+        private void FrmInicio_Load(object? sender, EventArgs e) => CentrarPanelPrincipal();
 
-        private void FrmInicio_Resize(object? sender, EventArgs e)
-        {
-            CentrarPanelPrincipal();
-
-        }
+        private void FrmInicio_Resize(object? sender, EventArgs e) => CentrarPanelPrincipal();
         private void CentrarPanelPrincipal()
         {
             panel1.Left = (ClientSize.Width - panel1.Width) / 2;

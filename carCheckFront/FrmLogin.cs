@@ -24,14 +24,8 @@ namespace carCheckFront
 
         }
 
-        private void FrmLogin_Load(object? sender, EventArgs e)
-        {
-            CentrarPanel();
-        }
-        private void FrmLogin_Resize(object? sender, EventArgs e)
-        {
-            CentrarPanel();
-        }
+        private void FrmLogin_Load(object? sender, EventArgs e) => CentrarPanel();
+        private void FrmLogin_Resize(object? sender, EventArgs e) => CentrarPanel();
         private void CentrarPanel()
         {
             panel1.Left = (ClientSize.Width - panel1.Width) / 2;

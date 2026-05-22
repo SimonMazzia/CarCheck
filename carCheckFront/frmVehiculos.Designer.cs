@@ -192,6 +192,7 @@
             txtModelo.Name = "txtModelo";
             txtModelo.Size = new Size(180, 23);
             txtModelo.TabIndex = 6;
+            
             // 
             // txtMarca
             // 
@@ -275,7 +276,7 @@
             dgvVehiculos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvVehiculos.Size = new Size(1403, 401);
             dgvVehiculos.TabIndex = 0;
-            dgvVehiculos.CellContentClick += dgvVehiculos_CellContentClick;
+            dgvVehiculos.CellClick += dgvVehiculos_CellClick;
             // 
             // frmVehiculos
             // 
@@ -302,6 +303,10 @@
             ResumeLayout(false);
             // 
         }
+
+        private void panelFormulario_Paint(object sender, PaintEventArgs e) { }
+
+        private void label2_Click(object sender, EventArgs e) => throw new NotImplementedException();
 
         #endregion
 

@@ -8,21 +8,16 @@ namespace carCheckData.Migrations
     public partial class strigchanges : Migration
     {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AlterColumn<string>(
+        protected override void Up(MigrationBuilder migrationBuilder) => migrationBuilder.AlterColumn<string>(
                 name: "TokenRecuperacion",
                 table: "Usuarios",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
-        }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AlterColumn<string>(
+        protected override void Down(MigrationBuilder migrationBuilder) => migrationBuilder.AlterColumn<string>(
                 name: "TokenRecuperacion",
                 table: "Usuarios",
                 type: "nvarchar(max)",
@@ -31,6 +26,5 @@ namespace carCheckData.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
                 oldNullable: true);
-        }
     }
 }

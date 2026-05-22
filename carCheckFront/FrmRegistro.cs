@@ -24,10 +24,7 @@ namespace carCheckFront
             textBox3.PasswordChar = '*'; // contraseña
         }
 
-        private void FrmRegistro_Resize(object? sender, EventArgs e)
-        {
-            CentrarPanel();
-        }
+        private void FrmRegistro_Resize(object? sender, EventArgs e) => CentrarPanel();
 
         private void CentrarPanel()
         {

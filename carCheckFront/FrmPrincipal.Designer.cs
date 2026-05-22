@@ -41,7 +41,9 @@
             lblLogo = new Label();
             panelTop = new Panel();
             panelContenido = new Panel();
+            panelContenedor = new Panel();
             panelMenu.SuspendLayout();
+            panelContenido.SuspendLayout();
             SuspendLayout();
             // 
             // lblBienvenida
@@ -189,7 +191,7 @@
             lblLogo.BackColor = Color.Transparent;
             lblLogo.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
             lblLogo.ForeColor = Color.White;
-            lblLogo.Location = new Point(30, 30);
+            lblLogo.Location = new Point(20, 23);
             lblLogo.Name = "lblLogo";
             lblLogo.Size = new Size(132, 37);
             lblLogo.TabIndex = 0;
@@ -207,11 +209,21 @@
             // panelContenido
             // 
             panelContenido.BackColor = Color.FromArgb(225, 232, 241);
+            panelContenido.Controls.Add(panelContenedor);
             panelContenido.Dock = DockStyle.Fill;
             panelContenido.Location = new Point(220, 75);
             panelContenido.Name = "panelContenido";
             panelContenido.Size = new Size(1038, 569);
             panelContenido.TabIndex = 3;
+            panelContenido.Paint += panelContenido_Paint;
+            // 
+            // panelContenedor
+            // 
+            panelContenedor.Dock = DockStyle.Fill;
+            panelContenedor.Location = new Point(0, 0);
+            panelContenedor.Name = "panelContenedor";
+            panelContenedor.Size = new Size(1038, 569);
+            panelContenedor.TabIndex = 0;
             // 
             // FrmPrincipal
             // 
@@ -229,6 +241,7 @@
             Load += FrmPrincipal_Load_1;
             panelMenu.ResumeLayout(false);
             panelMenu.PerformLayout();
+            panelContenido.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -248,5 +261,6 @@
         private Button btnConfiguracion;
         private Button btnCerrar;
         private Panel panelSeparador;
+        private Panel panelContenedor;
     }
 }

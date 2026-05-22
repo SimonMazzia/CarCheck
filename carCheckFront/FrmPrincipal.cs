@@ -26,6 +26,7 @@ namespace carCheckFront
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            
 
         }
 
@@ -36,10 +37,31 @@ namespace carCheckFront
 
         private void btnVehiculos_Click_1(object sender, EventArgs e)
         {
-            frmVehiculos frm= new frmVehiculos();
-            frm.ShowDialog();
+            AbrirFormulario(
+            new frmVehiculos());
 
 
+        }
+
+        private void panelContenido_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void AbrirFormulario(Form formulario)
+        {
+            panelContenedor.Controls.Clear();
+
+            formulario.TopLevel = false;
+
+            formulario.FormBorderStyle =
+                FormBorderStyle.None;
+
+            formulario.Dock = DockStyle.Fill;
+
+            panelContenedor.Controls.Add(formulario);
+
+            formulario.Show();
         }
     }
 }
