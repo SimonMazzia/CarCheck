@@ -224,6 +224,7 @@
             panelContenedor.Name = "panelContenedor";
             panelContenedor.Size = new Size(1038, 569);
             panelContenedor.TabIndex = 0;
+            panelContenedor.Paint += panelContenedor_Paint;
             // 
             // FrmPrincipal
             // 

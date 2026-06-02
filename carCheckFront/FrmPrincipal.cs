@@ -26,7 +26,8 @@ namespace carCheckFront
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            
+            AbrirFormulario(
+            new FrmDashboard());
 
         }
 
@@ -57,11 +58,16 @@ namespace carCheckFront
             formulario.FormBorderStyle =
                 FormBorderStyle.None;
 
-            formulario.Dock = DockStyle.Fill;
+            formulario.Dock = DockStyle.Fill;   
 
             panelContenedor.Controls.Add(formulario);
 
             formulario.Show();
+        }
+
+        private void panelContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

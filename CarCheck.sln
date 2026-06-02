@@ -13,6 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carCheckEntities", "carChec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carCheckServicios", "carCheckServicios\carCheckServicios.csproj", "{A9DA56E8-00CB-4AEC-9889-F6660F6FD5CE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{5415E124-68A3-41AC-92EE-7A7DF501A650}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Users\simon\OneDrive\Desktop\carchekImg1.jpg = ..\..\Users\simon\OneDrive\Desktop\carchekImg1.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +49,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5415E124-68A3-41AC-92EE-7A7DF501A650} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {095DCF9B-BD73-4E16-8407-3B36AF04B1E4}
