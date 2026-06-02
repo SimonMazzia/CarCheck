@@ -24,8 +24,8 @@ namespace carCheckFront
             pictureBox1.Image =
                 Image.FromFile(
                     @"C:\Users\simon\OneDrive\Desktop\carchekImg1.jpg");
-        }   
-        
+        }
+
         private void CargarDatos()
         {
             lblBienvenida.Text =
@@ -37,19 +37,24 @@ namespace carCheckFront
                     Sesion.UsuarioActual.Id)
                 .Count;
 
-            lblVehiculos.Text =
-                $"🚗 Vehículos registrados: {cantidadVehiculos}";
+            lblCantidadVehiculos.Text =
+                $"{cantidadVehiculos}";
 
-            lblServicios.Text =
-                "🔧 Servicios realizados: Próximamente";
+            lblCantidadServicios.Text =
+                "🔧";
 
-            lblPendientes.Text =
-                "⚠ Servicios pendientes: Próximamente";
+            lblCantidadPendientes.Text =
+                "⚠";
         }
 
-   //    private void frmDashboard_Load(object sender, EventArgs e)
-     //   {
-       //     pictureBox.Image= Image.FromFile(@"Assets\images\carchekImg1.jpg");
+        private void lblSubtitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //    private void frmDashboard_Load(object sender, EventArgs e)
+        //   {
+        //     pictureBox.Image= Image.FromFile(@"Assets\images\carchekImg1.jpg");
         //}
     }
 }

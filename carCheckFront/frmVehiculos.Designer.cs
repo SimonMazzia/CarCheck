@@ -78,7 +78,7 @@
             // 
             // panelFormulario
             // 
-            panelFormulario.BackColor = Color.White;
+            panelFormulario.BackColor = Color.White; 
             panelFormulario.Controls.Add(btnLimpiar);
             panelFormulario.Controls.Add(btnEliminar);
             panelFormulario.Controls.Add(btnModificar);
@@ -192,7 +192,6 @@
             txtModelo.Name = "txtModelo";
             txtModelo.Size = new Size(180, 23);
             txtModelo.TabIndex = 6;
-            
             // 
             // txtMarca
             // 
@@ -329,5 +328,6 @@
         private Button btnEliminar;
         private Button btnModificar;
         private Button btnAgregar;
+        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using carCheckEntities;
+using carCheckServicios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,7 +59,7 @@ namespace carCheckFront
             formulario.FormBorderStyle =
                 FormBorderStyle.None;
 
-            formulario.Dock = DockStyle.Fill;   
+            formulario.Dock = DockStyle.Fill;
 
             panelContenedor.Controls.Add(formulario);
 
@@ -69,6 +70,32 @@ namespace carCheckFront
         {
 
         }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(
+                new FrmDashboard());
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "¿Desea cerrar sesión?",
+                "Cerrar sesión",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                Sesion.UsuarioActual = default!; // Usar default! para evitar CS8625
+
+                Close();
+            }
+        }
+
+
     }
-}
+    }
+    
+
 

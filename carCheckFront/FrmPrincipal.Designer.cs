@@ -97,6 +97,7 @@
             btnCerrar.TabIndex = 4;
             btnCerrar.Text = "Cerrar Sesion";
             btnCerrar.UseVisualStyleBackColor = true;
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // btnConfiguracion
             // 
@@ -173,6 +174,7 @@
             btnInicio.TabIndex = 2;
             btnInicio.Text = "Inicio";
             btnInicio.UseVisualStyleBackColor = true;
+            btnInicio.Click += btnInicio_Click;
             // 
             // lblSubtitulo
             // 
