@@ -31,16 +31,21 @@ namespace carCheckFront
         {
             //boton iniciar sesion
             FrmLogin login = new FrmLogin();
-            login.Show();   
+            login.Show();
             Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //boton registrarse
-            FrmRegistro registro= new FrmRegistro();
+            FrmRegistro registro = new FrmRegistro();
             registro.Show();
             Hide();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

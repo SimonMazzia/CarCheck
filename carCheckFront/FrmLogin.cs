@@ -52,7 +52,8 @@ namespace carCheckFront
 
             if (user != null)
             {
-                MessageBox.Show($"Bienvenido {user.NombreUsuario}");
+                FrmBienvenida frm1 = new FrmBienvenida();
+                frm1.ShowDialog();
                 FrmPrincipal frm = new FrmPrincipal(user);
                 Hide();
                 frm.ShowDialog();

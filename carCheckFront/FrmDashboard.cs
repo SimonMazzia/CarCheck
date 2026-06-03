@@ -29,7 +29,7 @@ namespace carCheckFront
         private void CargarDatos()
         {
             lblBienvenida.Text =
-                $"Bienvenido, {Sesion.UsuarioActual.NombreUsuario}";
+                $"Hola de nuevo! , {Sesion.UsuarioActual.NombreUsuario}";
 
             int cantidadVehiculos =
                 vehiculoNegocio
@@ -41,10 +41,10 @@ namespace carCheckFront
                 $"{cantidadVehiculos}";
 
             lblCantidadServicios.Text =
-                "🔧";
+                "🔧3";
 
             lblCantidadPendientes.Text =
-                "⚠";
+                "⚠2";
         }
 
         private void lblSubtitulo_Click(object sender, EventArgs e)
@@ -52,9 +52,9 @@ namespace carCheckFront
 
         }
 
-        //    private void frmDashboard_Load(object sender, EventArgs e)
-        //   {
-        //     pictureBox.Image= Image.FromFile(@"Assets\images\carchekImg1.jpg");
-        //}
+        private void panelDashboardTop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

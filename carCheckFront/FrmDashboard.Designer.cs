@@ -53,7 +53,7 @@
             lblBienvenida.AutoSize = true;
             lblBienvenida.Font = new Font("Segoe UI Semibold", 24F, FontStyle.Bold);
             lblBienvenida.ForeColor = Color.FromArgb(24, 34, 46);
-            lblBienvenida.Location = new Point(12, 9);
+            lblBienvenida.Location = new Point(30, 9);
             lblBienvenida.Name = "lblBienvenida";
             lblBienvenida.Size = new Size(181, 45);
             lblBienvenida.TabIndex = 0;
@@ -83,6 +83,7 @@
             panelDashboardTop.Name = "panelDashboardTop";
             panelDashboardTop.Size = new Size(800, 216);
             panelDashboardTop.TabIndex = 5;
+            panelDashboardTop.Paint += panelDashboardTop_Paint;
             // 
             // panelPendientes
             // 
@@ -178,14 +179,14 @@
             lblCantidadVehiculos.Name = "lblCantidadVehiculos";
             lblCantidadVehiculos.Size = new Size(33, 40);
             lblCantidadVehiculos.TabIndex = 0;
-            lblCantidadVehiculos.Text = "2";
+            lblCantidadVehiculos.Text = "0";
             // 
             // lblSubtitulo
             // 
             lblSubtitulo.AutoSize = true;
             lblSubtitulo.Font = new Font("Segoe UI", 10F);
             lblSubtitulo.ForeColor = Color.FromArgb(120, 130, 140);
-            lblSubtitulo.Location = new Point(30, 60);
+            lblSubtitulo.Location = new Point(39, 54);
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Size = new Size(298, 19);
             lblSubtitulo.TabIndex = 4;
