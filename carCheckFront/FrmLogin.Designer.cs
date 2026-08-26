@@ -80,7 +80,7 @@
             button3.Name = "button3";
             button3.Size = new Size(205, 30);
             button3.TabIndex = 6;
-            button3.Text = "Recuperar contraseña";
+            button3.Text = "Actualizar contraseña ";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 

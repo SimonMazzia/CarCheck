@@ -63,6 +63,7 @@ namespace carCheckFront
             if (negocio.Registrar(nuevo))
             {
                 MessageBox.Show("Usuario registrado con éxito");
+                MessageBox.Show("No olvide su PIN de seguridad unico! ");
                 Close();
 
                 FrmLogin login = new FrmLogin();
@@ -70,7 +71,7 @@ namespace carCheckFront
             }
             else
             {
-                MessageBox.Show("Error al registrar usuario");
+                MessageBox.Show("Error el email ya se encuentra registrado!");
             }
         }
 

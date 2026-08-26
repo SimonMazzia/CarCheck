@@ -18,11 +18,15 @@ namespace carCheckBussines
             {
                 return false;
             }
-
+            if (usuarioDatos.ExisteEmail(usuario.Email))
+            {
+                return false;
+            }
             if (usuario.PinHash.Length < 4)
             {
                 return false;
             }
+    
 
             // 🔐 Hashear password
             usuario.PasswordHash = Seguridad.HashearPassword(usuario.PasswordHash);
