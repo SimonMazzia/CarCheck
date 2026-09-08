@@ -143,6 +143,7 @@
             btnServicios.TabIndex = 2;
             btnServicios.Text = "Servicios";
             btnServicios.UseVisualStyleBackColor = true;
+            btnServicios.Click += btnServicios_Click;
             // 
             // btnVehiculos
             // 

@@ -29,29 +29,24 @@
         private void InitializeComponent()
         {
             btnNuevoServicio = new Button();
-            label2 = new Label();
             panel1 = new Panel();
             labelService = new Label();
+            panel2 = new Panel();
+            dgvServicios = new DataGridView();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvServicios).BeginInit();
             SuspendLayout();
             // 
             // btnNuevoServicio
             // 
-            btnNuevoServicio.Location = new Point(20, 87);
+            btnNuevoServicio.Location = new Point(12, 6);
             btnNuevoServicio.Name = "btnNuevoServicio";
             btnNuevoServicio.Size = new Size(132, 33);
             btnNuevoServicio.TabIndex = 1;
             btnNuevoServicio.Text = "Nuevo Servicio ";
             btnNuevoServicio.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(34, 145);
-            label2.Name = "label2";
-            label2.Size = new Size(118, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Historial de servicios ";
+            btnNuevoServicio.Click += btnNuevoServicio_Click;
             // 
             // panel1
             // 
@@ -74,26 +69,46 @@
             labelService.TabIndex = 0;
             labelService.Text = "Servicios Tecnicos";
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnNuevoServicio);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 60);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(800, 120);
+            panel2.TabIndex = 3;
+            // 
+            // dgvServicios
+            // 
+            dgvServicios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvServicios.Dock = DockStyle.Fill;
+            dgvServicios.Location = new Point(0, 180);
+            dgvServicios.Name = "dgvServicios";
+            dgvServicios.Size = new Size(800, 270);
+            dgvServicios.TabIndex = 4;
+            // 
             // FrmNuevoServicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgvServicios);
+            Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(label2);
-            Controls.Add(btnNuevoServicio);
             Name = "FrmNuevoServicio";
             Text = "FrmNuevoServicio";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvServicios).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
         private Button btnNuevoServicio;
-        private Label label2;
         private Panel panel1;
         private Label labelService;
+        private Panel panel2;
+        private DataGridView dgvServicios;
     }
 }

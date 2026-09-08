@@ -93,9 +93,12 @@ namespace carCheckFront
             }
         }
 
-
+        private void btnServicios_Click(object sender, EventArgs e)
+        {
+            new FrmNuevoServicio().ShowDialog();
+        }
     }
-    }
+}
     
 
 

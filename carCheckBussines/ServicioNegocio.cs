@@ -47,5 +47,9 @@ namespace carCheckBussines
             return true;
 
         }
+        public List<Servicio> ObtenerServiciosPorUsuario(int usuarioId)
+            {
+            return servicioDatos.ObtenerServiciosPorUsuario(usuarioId);
+        }
     }
 }
