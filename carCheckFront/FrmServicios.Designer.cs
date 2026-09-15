@@ -10,208 +10,625 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.
+        /// </param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            label1 = new Label();
+            labelTitulo = new Label();
+            btnVolver = new Button();
+
+            panel2 = new Panel();
+
+            labelVehiculo = new Label();
             cbmVehiculo = new ComboBox();
-            label2 = new Label();
+
+            labelTipoServicio = new Label();
             cbmTipoServicio = new ComboBox();
-            label3 = new Label();
+
+            labelFecha = new Label();
             dtpFecha = new DateTimePicker();
-            label4 = new Label();
+
+            labelKilometraje = new Label();
             txtKilometraje = new TextBox();
-            label5 = new Label();
+
+            labelCosto = new Label();
             txtCosto = new TextBox();
-            label6 = new Label();
+
+            labelDescripcion = new Label();
             txtDescripcion = new TextBox();
-            btnCancelar = new Button();
+
             btnGuardar = new Button();
+            btnCancelar = new Button();
+
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
+
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnGuardar);
-            panel1.Controls.Add(btnCancelar);
-            panel1.Controls.Add(txtDescripcion);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(txtCosto);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(txtKilometraje);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(dtpFecha);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(cbmTipoServicio);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(cbmVehiculo);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(35, 12);
+            panel1.BackColor = Color.FromArgb(0, 122, 204);
+            panel1.Controls.Add(labelTitulo);
+            panel1.Controls.Add(btnVolver);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(736, 426);
+            panel1.Size = new Size(850, 70);
             panel1.TabIndex = 0;
+
             // 
-            // label1
+            // labelTitulo
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(49, 25);
-            label1.Name = "label1";
-            label1.Size = new Size(111, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Vehiculo (patente) *";
+            labelTitulo.AutoSize = true;
+            labelTitulo.Font = new Font(
+                "Segoe UI",
+                18F,
+                FontStyle.Bold,
+                GraphicsUnit.Point,
+                0);
+
+            labelTitulo.ForeColor = Color.White;
+
+            labelTitulo.Location = new Point(20, 18);
+
+            labelTitulo.Name = "labelTitulo";
+
+            labelTitulo.Size = new Size(300, 32);
+
+            labelTitulo.TabIndex = 0;
+
+            labelTitulo.Text = "Nuevo servicio técnico";
+
+            // 
+            // btnVolver
+            // 
+            btnVolver.Anchor =
+                AnchorStyles.Top |
+                AnchorStyles.Right;
+
+            btnVolver.BackColor = Color.White;
+
+            btnVolver.FlatAppearance.BorderSize = 0;
+
+            btnVolver.FlatStyle = FlatStyle.Flat;
+
+            btnVolver.Font =
+                new Font(
+                    "Segoe UI",
+                    9F,
+                    FontStyle.Bold);
+
+            btnVolver.ForeColor =
+                Color.FromArgb(52, 73, 94);
+
+            btnVolver.Location =
+                new Point(730, 16);
+
+            btnVolver.Name =
+                "btnVolver";
+
+            btnVolver.Size =
+                new Size(100, 38);
+
+            btnVolver.TabIndex =
+                1;
+
+            btnVolver.Text =
+                "←  Volver";
+
+            btnVolver.UseVisualStyleBackColor =
+                false;
+
+            btnVolver.Click +=
+                btnCancelar_Click;
+
+            // 
+            // panel2
+            // 
+            panel2.BackColor =
+                Color.White;
+
+            panel2.Controls.Add(labelVehiculo);
+            panel2.Controls.Add(cbmVehiculo);
+
+            panel2.Controls.Add(labelTipoServicio);
+            panel2.Controls.Add(cbmTipoServicio);
+
+            panel2.Controls.Add(labelFecha);
+            panel2.Controls.Add(dtpFecha);
+
+            panel2.Controls.Add(labelKilometraje);
+            panel2.Controls.Add(txtKilometraje);
+
+            panel2.Controls.Add(labelCosto);
+            panel2.Controls.Add(txtCosto);
+
+            panel2.Controls.Add(labelDescripcion);
+            panel2.Controls.Add(txtDescripcion);
+
+            panel2.Controls.Add(btnGuardar);
+            panel2.Controls.Add(btnCancelar);
+
+            panel2.Location =
+                new Point(40, 95);
+
+            panel2.Name =
+                "panel2";
+
+            panel2.Size =
+                new Size(770, 480);
+
+            panel2.TabIndex =
+                1;
+
+            // 
+            // labelVehiculo
+            // 
+            labelVehiculo.AutoSize = true;
+
+            labelVehiculo.Font =
+                new Font(
+                    "Segoe UI",
+                    9F,
+                    FontStyle.Bold);
+
+            labelVehiculo.ForeColor =
+                Color.FromArgb(52, 73, 94);
+
+            labelVehiculo.Location =
+                new Point(35, 30);
+
+            labelVehiculo.Name =
+                "labelVehiculo";
+
+            labelVehiculo.Size =
+                new Size(58, 15);
+
+            labelVehiculo.Text =
+                "Vehículo";
+
             // 
             // cbmVehiculo
             // 
+            cbmVehiculo.DropDownStyle =
+                ComboBoxStyle.DropDownList;
+
+            cbmVehiculo.Font =
+                new Font(
+                    "Segoe UI",
+                    10F);
+
             cbmVehiculo.FormattingEnabled = true;
-            cbmVehiculo.Location = new Point(49, 43);
-            cbmVehiculo.Name = "cbmVehiculo";
-            cbmVehiculo.Size = new Size(249, 23);
-            cbmVehiculo.TabIndex = 1;
+
+            cbmVehiculo.Location =
+                new Point(35, 50);
+
+            cbmVehiculo.Name =
+                "cbmVehiculo";
+
+            cbmVehiculo.Size =
+                new Size(300, 25);
+
+            cbmVehiculo.TabIndex =
+                2;
+
+            cbmVehiculo.SelectedIndexChanged +=
+                cbmVehiculo_SelectedIndexChanged;
+
             // 
-            // label2
+            // labelTipoServicio
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(49, 69);
-            label2.Name = "label2";
-            label2.Size = new Size(98, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Tipo de servicio *";
+            labelTipoServicio.AutoSize = true;
+
+            labelTipoServicio.Font =
+                new Font(
+                    "Segoe UI",
+                    9F,
+                    FontStyle.Bold);
+
+            labelTipoServicio.ForeColor =
+                Color.FromArgb(52, 73, 94);
+
+            labelTipoServicio.Location =
+                new Point(390, 30);
+
+            labelTipoServicio.Name =
+                "labelTipoServicio";
+
+            labelTipoServicio.Size =
+                new Size(101, 15);
+
+            labelTipoServicio.Text =
+                "Tipo de servicio";
+
             // 
             // cbmTipoServicio
             // 
+            cbmTipoServicio.DropDownStyle =
+                ComboBoxStyle.DropDownList;
+
+            cbmTipoServicio.Font =
+                new Font(
+                    "Segoe UI",
+                    10F);
+
             cbmTipoServicio.FormattingEnabled = true;
-            cbmTipoServicio.Location = new Point(49, 87);
-            cbmTipoServicio.Name = "cbmTipoServicio";
-            cbmTipoServicio.Size = new Size(249, 23);
-            cbmTipoServicio.TabIndex = 3;
+
+            cbmTipoServicio.Location =
+                new Point(390, 50);
+
+            cbmTipoServicio.Name =
+                "cbmTipoServicio";
+
+            cbmTipoServicio.Size =
+                new Size(335, 25);
+
+            cbmTipoServicio.TabIndex =
+                3;
+
             // 
-            // label3
+            // labelFecha
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(49, 113);
-            label3.Name = "label3";
-            label3.Size = new Size(121, 15);
-            label3.TabIndex = 4;
-            label3.Text = "Fecha de realizacion *";
+            labelFecha.AutoSize = true;
+
+            labelFecha.Font =
+                new Font(
+                    "Segoe UI",
+                    9F,
+                    FontStyle.Bold);
+
+            labelFecha.ForeColor =
+                Color.FromArgb(52, 73, 94);
+
+            labelFecha.Location =
+                new Point(35, 105);
+
+            labelFecha.Name =
+                "labelFecha";
+
+            labelFecha.Size =
+                new Size(37, 15);
+
+            labelFecha.Text =
+                "Fecha";
+
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(49, 131);
-            dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(200, 23);
-            dtpFecha.TabIndex = 5;
+            dtpFecha.Font =
+                new Font(
+                    "Segoe UI",
+                    10F);
+
+            dtpFecha.Format =
+                DateTimePickerFormat.Short;
+
+            dtpFecha.Location =
+                new Point(35, 125);
+
+            dtpFecha.Name =
+                "dtpFecha";
+
+            dtpFecha.Size =
+                new Size(180, 25);
+
+            dtpFecha.TabIndex =
+                4;
+
             // 
-            // label4
+            // labelKilometraje
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(49, 157);
-            label4.Name = "label4";
-            label4.Size = new Size(75, 15);
-            label4.TabIndex = 6;
-            label4.Text = "Kilometraje *";
+            labelKilometraje.AutoSize = true;
+
+            labelKilometraje.Font =
+                new Font(
+                    "Segoe UI",
+                    9F,
+                    FontStyle.Bold);
+
+            labelKilometraje.ForeColor =
+                Color.FromArgb(52, 73, 94);
+
+            labelKilometraje.Location =
+                new Point(250, 105);
+
+            labelKilometraje.Name =
+                "labelKilometraje";
+
+            labelKilometraje.Size =
+                new Size(79, 15);
+
+            labelKilometraje.Text =
+                "Kilometraje";
+
             // 
             // txtKilometraje
             // 
-            txtKilometraje.Location = new Point(49, 175);
-            txtKilometraje.Name = "txtKilometraje";
-            txtKilometraje.Size = new Size(121, 23);
-            txtKilometraje.TabIndex = 7;
+            txtKilometraje.Font =
+                new Font(
+                    "Segoe UI",
+                    10F);
+
+            txtKilometraje.Location =
+                new Point(250, 125);
+
+            txtKilometraje.Name =
+                "txtKilometraje";
+
+            txtKilometraje.Size =
+                new Size(180, 25);
+
+            txtKilometraje.TabIndex =
+                5;
+
+            txtKilometraje.TextChanged +=
+                txtKilometraje_TextChanged;
+
             // 
-            // label5
+            // labelCosto
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(49, 201);
-            label5.Name = "label5";
-            label5.Size = new Size(38, 15);
-            label5.TabIndex = 8;
-            label5.Text = "Costo";
+            labelCosto.AutoSize = true;
+
+            labelCosto.Font =
+                new Font(
+                    "Segoe UI",
+                    9F,
+                    FontStyle.Bold);
+
+            labelCosto.ForeColor =
+                Color.FromArgb(52, 73, 94);
+
+            labelCosto.Location =
+                new Point(465, 105);
+
+            labelCosto.Name =
+                "labelCosto";
+
+            labelCosto.Size =
+                new Size(39, 15);
+
+            labelCosto.Text =
+                "Costo";
+
             // 
             // txtCosto
             // 
-            txtCosto.Location = new Point(49, 219);
-            txtCosto.Name = "txtCosto";
-            txtCosto.Size = new Size(121, 23);
-            txtCosto.TabIndex = 9;
+            txtCosto.Font =
+                new Font(
+                    "Segoe UI",
+                    10F);
+
+            txtCosto.Location =
+                new Point(465, 125);
+
+            txtCosto.Name =
+                "txtCosto";
+
+            txtCosto.Size =
+                new Size(260, 25);
+
+            txtCosto.TabIndex =
+                6;
+
+            txtCosto.Leave +=
+                txtCosto_Leave;
+
             // 
-            // label6
+            // labelDescripcion
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(49, 245);
-            label6.Name = "label6";
-            label6.Size = new Size(84, 15);
-            label6.TabIndex = 10;
-            label6.Text = "Observaciones";
+            labelDescripcion.AutoSize = true;
+
+            labelDescripcion.Font =
+                new Font(
+                    "Segoe UI",
+                    9F,
+                    FontStyle.Bold);
+
+            labelDescripcion.ForeColor =
+                Color.FromArgb(52, 73, 94);
+
+            labelDescripcion.Location =
+                new Point(35, 180);
+
+            labelDescripcion.Name =
+                "labelDescripcion";
+
+            labelDescripcion.Size =
+                new Size(76, 15);
+
+            labelDescripcion.Text =
+                "Descripción";
+
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(49, 263);
+            txtDescripcion.Font =
+                new Font(
+                    "Segoe UI",
+                    10F);
+
+            txtDescripcion.Location =
+                new Point(35, 202);
+
             txtDescripcion.Multiline = true;
-            txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(236, 73);
-            txtDescripcion.TabIndex = 11;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.Location = new Point(130, 374);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 12;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+
+            txtDescripcion.Name =
+                "txtDescripcion";
+
+            txtDescripcion.ScrollBars =
+                ScrollBars.Vertical;
+
+            txtDescripcion.Size =
+                new Size(690, 120);
+
+            txtDescripcion.TabIndex =
+                7;
+
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(49, 374);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 23);
-            btnGuardar.TabIndex = 13;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.BackColor =
+                Color.FromArgb(0, 122, 204);
+
+            btnGuardar.FlatAppearance.BorderSize =
+                0;
+
+            btnGuardar.FlatStyle =
+                FlatStyle.Flat;
+
+            btnGuardar.Font =
+                new Font(
+                    "Segoe UI",
+                    9F,
+                    FontStyle.Bold);
+
+            btnGuardar.ForeColor =
+                Color.White;
+
+            btnGuardar.Location =
+                new Point(435, 375);
+
+            btnGuardar.Name =
+                "btnGuardar";
+
+            btnGuardar.Size =
+                new Size(130, 40);
+
+            btnGuardar.TabIndex =
+                8;
+
+            btnGuardar.Text =
+                "✓  Guardar";
+
+            btnGuardar.UseVisualStyleBackColor =
+                false;
+
+            btnGuardar.Click +=
+                btnGuardar_Click;
+
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor =
+                Color.White;
+
+            btnCancelar.FlatAppearance.BorderColor =
+                Color.FromArgb(210, 215, 220);
+
+            btnCancelar.FlatAppearance.BorderSize =
+                1;
+
+            btnCancelar.FlatStyle =
+                FlatStyle.Flat;
+
+            btnCancelar.Font =
+                new Font(
+                    "Segoe UI",
+                    9F,
+                    FontStyle.Bold);
+
+            btnCancelar.ForeColor =
+                Color.FromArgb(52, 73, 94);
+
+            btnCancelar.Location =
+                new Point(585, 375);
+
+            btnCancelar.Name =
+                "btnCancelar";
+
+            btnCancelar.Size =
+                new Size(140, 40);
+
+            btnCancelar.TabIndex =
+                9;
+
+            btnCancelar.Text =
+                "Cancelar";
+
+            btnCancelar.UseVisualStyleBackColor =
+                false;
+
+            btnCancelar.Click +=
+                btnCancelar_Click;
+
             // 
             // FrmServicios
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            AutoScaleDimensions =
+                new SizeF(7F, 15F);
+
+            AutoScaleMode =
+                AutoScaleMode.Font;
+
+            BackColor =
+                Color.FromArgb(239, 244, 250);
+
+            ClientSize =
+                new Size(850, 620);
+
+            Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "FrmServicios";
-            Text = "FrmServicios";
+
+            MinimumSize =
+                new Size(850, 620);
+
+            Name =
+                "FrmServicios";
+
+            StartPosition =
+                FormStartPosition.CenterScreen;
+
+            Text =
+                "CarCheck - Nuevo servicio";
+
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private Label label3;
-        private ComboBox cbmTipoServicio;
-        private Label label2;
+        private Label labelTitulo;
+        private Button btnVolver;
+
+        private Panel panel2;
+
+        private Label labelVehiculo;
         private ComboBox cbmVehiculo;
-        private Label label1;
-        private TextBox txtDescripcion;
-        private Label label6;
-        private TextBox txtCosto;
-        private Label label5;
-        private TextBox txtKilometraje;
-        private Label label4;
+
+        private Label labelTipoServicio;
+        private ComboBox cbmTipoServicio;
+
+        private Label labelFecha;
         private DateTimePicker dtpFecha;
+
+        private Label labelKilometraje;
+        private TextBox txtKilometraje;
+
+        private Label labelCosto;
+        private TextBox txtCosto;
+
+        private Label labelDescripcion;
+        private TextBox txtDescripcion;
+
         private Button btnGuardar;
         private Button btnCancelar;
     }

@@ -339,6 +339,9 @@ namespace carCheckFront
             dgvVehiculos.MultiSelect = false;
         }
 
+        private void txtMarca_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

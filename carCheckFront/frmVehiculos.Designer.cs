@@ -78,7 +78,7 @@
             // 
             // panelFormulario
             // 
-            panelFormulario.BackColor = Color.White; 
+            panelFormulario.BackColor = Color.White;
             panelFormulario.Controls.Add(btnLimpiar);
             panelFormulario.Controls.Add(btnEliminar);
             panelFormulario.Controls.Add(btnModificar);
@@ -199,6 +199,7 @@
             txtMarca.Name = "txtMarca";
             txtMarca.Size = new Size(180, 23);
             txtMarca.TabIndex = 5;
+            txtMarca.TextChanged += txtMarca_TextChanged;
             // 
             // lblKilometraje
             // 
