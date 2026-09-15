@@ -389,9 +389,7 @@ namespace carCheckFront
         // MODIFICAR SERVICIO
         // =========================================================
 
-        private void btnModificar_Click(
-            object sender,
-            EventArgs e)
+        private void btnModificar_Click(object sender, EventArgs e)
         {
             if (dgvServicios.CurrentRow == null)
             {
@@ -410,13 +408,14 @@ namespace carCheckFront
                         .Cells["Id"]
                         .Value);
 
-            MessageBox.Show(
-                "Servicio seleccionado: " +
-                servicioId +
-                "\n\nLa modificación se implementará en HU02.",
-                "CarCheck",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            FrmServicios frmServicios =
+                new FrmServicios(servicioId);
+
+            frmServicios.ShowDialog();
+
+            // Cuando se cierre el formulario,
+            // actualizamos la grilla.
+            CargarServicios();
         }
 
         // =========================================================
@@ -446,24 +445,35 @@ namespace carCheckFront
 
             DialogResult resultado =
                 MessageBox.Show(
-                    "¿Está seguro de que desea eliminar este servicio?",
-                    "CarCheck",
+                    "¿Está seguro de que desea eliminar este servicio?\n\n" +
+                    "Esta acción eliminará el registro definitivamente.",
+                    "Eliminar servicio",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                    MessageBoxIcon.Warning);
 
             if (resultado != DialogResult.Yes)
                 return;
 
-            // La eliminación lógica se implementará
-            // cuando trabajemos HU04.
+            if (servicioNegocio.EliminarServicio(
+                servicioId,
+                out string mensaje))
+            {
+                MessageBox.Show(
+                    mensaje,
+                    "CarCheck",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
-            MessageBox.Show(
-                "Servicio seleccionado: " +
-                servicioId +
-                "\n\nLa eliminación lógica se implementará en HU04.",
-                "CarCheck",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                CargarServicios();
+            }
+            else
+            {
+                MessageBox.Show(
+                    mensaje,
+                    "CarCheck",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
         }
 
         // =========================================================
@@ -492,5 +502,6 @@ namespace carCheckFront
             DataGridViewCellEventArgs e)
         {
         }
+
     }
 }

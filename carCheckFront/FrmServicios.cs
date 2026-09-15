@@ -25,9 +25,15 @@ namespace carCheckFront
         private readonly TipoServicioNegocio tipoServicioNegocio =
             new TipoServicioNegocio();
 
-        public FrmServicios()
-        {   
+        // ID del servicio que estamos modificando.
+        // Si es null, estamos creando uno nuevo.
+        private int? servicioId;
+
+        public FrmServicios(int? servicioId = null)
+        {
             InitializeComponent();
+
+            this.servicioId = servicioId;
 
             Load += FrmServicios_Load;
         }
@@ -36,11 +42,12 @@ namespace carCheckFront
         {
             CargarVehiculos();
             CargarTiposServicio();
-        }
 
-        // ==========================================
-        // VEHÍCULOS
-        // ==========================================
+            if (servicioId.HasValue)
+            {
+                CargarServicioParaModificar();
+            }
+        }
 
         private void CargarVehiculos()
         {
@@ -53,13 +60,8 @@ namespace carCheckFront
 
             cbmVehiculo.DisplayMember = "Patente";
             cbmVehiculo.ValueMember = "Id";
-
             cbmVehiculo.SelectedIndex = -1;
         }
-
-        // ==========================================
-        // TIPOS DE SERVICIO
-        // ==========================================
 
         private void CargarTiposServicio()
         {
@@ -70,61 +72,87 @@ namespace carCheckFront
 
             cbmTipoServicio.DisplayMember = "Nombre";
             cbmTipoServicio.ValueMember = "Id";
-
             cbmTipoServicio.SelectedIndex = -1;
         }
 
-        // ==========================================
-        // EVENTOS
-        // ==========================================
+        private void CargarServicioParaModificar()
+        {
+            Servicio servicio =
+                servicioNegocio.ObtenerPorId(servicioId.Value);
+
+            if (servicio == null)
+            {
+                MessageBox.Show(
+                    "No se encontró el servicio seleccionado.",
+                    "CarCheck",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                this.Close();
+                return;
+            }
+
+            // Cargamos los datos en los controles.
+
+            cbmVehiculo.SelectedValue =
+                servicio.VehiculoId;
+
+            cbmTipoServicio.SelectedValue =
+                servicio.TipoServicioId;
+
+            dtpFecha.Value =
+                servicio.Fecha;
+
+            txtKilometraje.Text =
+                servicio.Kilometraje.ToString();
+
+            txtCosto.Text =
+                servicio.Costo.ToString("N0");
+
+            txtDescripcion.Text =
+                servicio.Descripcion;
+
+            // Cambiamos el título del formulario.
+            labelTitulo.Text = "Modificar servicio técnico";
+
+            // Cambiamos el texto del botón.
+            btnGuardar.Text = "Guardar cambios";
+        }
 
         private void cbmVehiculo_SelectedIndexChanged(
             object sender,
             EventArgs e)
         {
-
         }
 
         private void panel1_Paint(
             object sender,
             PaintEventArgs e)
         {
-
         }
 
         private void txtKilometraje_TextChanged(
             object sender,
             EventArgs e)
         {
-
         }
-
-        // ==========================================
-        // FORMATO DEL COSTO
-        // ==========================================
 
         private void txtCosto_Leave(
             object sender,
             EventArgs e)
         {
-            if (decimal.TryParse(
-                txtCosto.Text,
-                out decimal costo))
+            if (decimal.TryParse(txtCosto.Text, out decimal costo))
             {
                 txtCosto.Text = costo.ToString("N0");
             }
         }
-
-        // ==========================================
-        // GUARDAR
-        // ==========================================
 
         private void btnGuardar_Click(
             object sender,
             EventArgs e)
         {
             // -----------------------------
-            // Vehículo
+            // VALIDAR VEHÍCULO
             // -----------------------------
 
             if (cbmVehiculo.SelectedIndex == -1)
@@ -139,7 +167,7 @@ namespace carCheckFront
             }
 
             // -----------------------------
-            // Tipo de servicio
+            // VALIDAR TIPO DE SERVICIO
             // -----------------------------
 
             if (cbmTipoServicio.SelectedIndex == -1)
@@ -154,7 +182,7 @@ namespace carCheckFront
             }
 
             // -----------------------------
-            // Kilometraje
+            // VALIDAR KILOMETRAJE
             // -----------------------------
 
             if (!int.TryParse(
@@ -182,7 +210,7 @@ namespace carCheckFront
             }
 
             // -----------------------------
-            // Costo
+            // VALIDAR COSTO
             // -----------------------------
 
             string textoCosto = txtCosto.Text
@@ -216,7 +244,7 @@ namespace carCheckFront
             }
 
             // -----------------------------
-            // Crear servicio
+            // CREAR OBJETO SERVICIO
             // -----------------------------
 
             Servicio servicio = new Servicio
@@ -227,26 +255,61 @@ namespace carCheckFront
                 TipoServicioId =
                     Convert.ToInt32(cbmTipoServicio.SelectedValue),
 
-                Fecha = dtpFecha.Value,
+                Fecha =
+                    dtpFecha.Value,
 
-                Kilometraje = kilometraje,
+                Kilometraje =
+                    kilometraje,
 
-                Costo = costo,
+                Costo =
+                    costo,
 
                 Descripcion =
                     txtDescripcion.Text.Trim()
             };
 
             // -----------------------------
-            // Registrar
+            // MODIFICAR
+            // -----------------------------
+
+            if (servicioId.HasValue)
+            {
+                servicio.Id = servicioId.Value;
+
+                if (servicioNegocio.ModificarServicio(
+                    servicio,
+                    out string mensaje))
+                {
+                    MessageBox.Show(
+                        mensaje,
+                        "CarCheck",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        mensaje,
+                        "CarCheck",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
+
+                return;
+            }
+
+            // -----------------------------
+            // REGISTRAR NUEVO
             // -----------------------------
 
             if (servicioNegocio.RegistrarServicio(
                 servicio,
-                out string mensaje))
+                out string mensajeRegistro))
             {
                 MessageBox.Show(
-                    mensaje,
+                    mensajeRegistro,
                     "CarCheck",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
@@ -256,16 +319,12 @@ namespace carCheckFront
             else
             {
                 MessageBox.Show(
-                    mensaje,
+                    mensajeRegistro,
                     "CarCheck",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
         }
-
-        // ==========================================
-        // CANCELAR
-        // ==========================================
 
         private void btnCancelar_Click(
             object sender,
