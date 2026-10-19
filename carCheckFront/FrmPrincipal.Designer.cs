@@ -128,6 +128,7 @@
             btnHistorial.TabIndex = 2;
             btnHistorial.Text = "Historial";
             btnHistorial.UseVisualStyleBackColor = true;
+            btnHistorial.Click += btnHistorial_Click;
             // 
             // btnServicios
             // 

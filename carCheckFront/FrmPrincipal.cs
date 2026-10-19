@@ -97,6 +97,15 @@ namespace carCheckFront
         {
             new FrmNuevoServicio().ShowDialog();
         }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+
+
+        AbrirFormulario(new FrmHistorial());
+
+
+        }
     }
 }
     
