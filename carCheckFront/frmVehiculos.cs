@@ -4,6 +4,7 @@ using carCheckServicios;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace carCheckFront
 {
@@ -13,9 +14,11 @@ namespace carCheckFront
             new VehiculoNegocio();
 
         private int vehiculosSeleccionadoId = 0;
+        private Button btnHistorial;
         public frmVehiculos()
         {
             InitializeComponent();
+            ConfigurarBotonHistorial();
 
             Load += frmVehiculos_Load;
         }
@@ -28,6 +31,88 @@ namespace carCheckFront
             EstilizarTabla();
             ConfigurarAutoComplete();
             CargarVehiculos();
+        }
+
+        private void ConfigurarBotonHistorial()
+        {
+            btnHistorial = new Button
+            {
+                Name = "btnHistorial",
+                Text = "Historial / Exportar PDF",
+                BackColor = Color.FromArgb(0, 122, 204),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand,
+                Location = new Point(980, 25),
+                Size = new Size(170, 38),
+                UseVisualStyleBackColor = false
+            };
+
+            btnHistorial.FlatAppearance.BorderSize = 0;
+            btnHistorial.Click += btnHistorial_Click;
+            panelFormulario.Controls.Add(btnHistorial);
+        }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            if (vehiculosSeleccionadoId == 0)
+            {
+                MessageBox.Show(
+                    "Seleccioná un vehículo para exportar su historial.",
+                    "CarCheck",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+
+            using SaveFileDialog dialogo = new SaveFileDialog
+            {
+                Title = "Guardar historial de mantenimiento",
+                Filter = "Archivo PDF (*.pdf)|*.pdf",
+                DefaultExt = "pdf",
+                AddExtension = true,
+                FileName = $"CarCheck_Historial_{vehiculosSeleccionadoId}.pdf"
+            };
+
+            if (dialogo.ShowDialog() != DialogResult.OK)
+                return;
+
+            try
+            {
+                int usuarioId = Sesion.UsuarioActual.Id;
+                var vehiculo = new Vehiculo
+                {
+                    Id = vehiculosSeleccionadoId,
+                    Marca = txtMarca.Text.Trim(),
+                    Modelo = txtModelo.Text.Trim(),
+                    Patente = txtPatente.Text.Trim().ToUpper(),
+                    Anio = (int)numericUpDownAnio.Value,
+                    Kilometraje = (int)numericUpDownKm.Value,
+                    UsuarioId = usuarioId
+                };
+
+                var servicios = new ServicioNegocio()
+                    .ObtenerServiciosPorUsuario(usuarioId)
+                    .Where(s => s.VehiculoId == vehiculosSeleccionadoId)
+                    .OrderByDescending(s => s.Fecha)
+                    .ToList();
+
+                ReporteHistorialPdf.Generar(vehiculo, servicios, dialogo.FileName);
+
+                MessageBox.Show(
+                    "El informe PDF se exportó correctamente.",
+                    "CarCheck",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"No se pudo generar el informe PDF. Detalle: {ex.Message}",
+                    "Error al exportar",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void CargarVehiculos()
