@@ -47,6 +47,15 @@ namespace carCheckData
                 return true;
             }
         }
+        public Vehiculo ObtenerVehiculoPorUsuario(int vehiculoId, int usuarioId)
+        {
+            using (var db = new CarCheckDbContext())
+            {
+                return db.Vehiculos.FirstOrDefault(v =>
+                    v.Id == vehiculoId &&
+                    v.UsuarioId == usuarioId);
+            }
+        }
         public bool ModificarVehiculo(Vehiculo vehiculoModificado)
         {
             using (var db = new CarCheckDbContext())

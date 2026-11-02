@@ -87,5 +87,9 @@ namespace carCheckBussines
 
             return true;
         }
+        public Vehiculo ObtenerVehiculoPorUsuario(int vehiculoId, int usuarioId)
+        {
+            return vehiculoDatos.ObtenerVehiculoPorUsuario(vehiculoId, usuarioId);
+        }
     }
 }

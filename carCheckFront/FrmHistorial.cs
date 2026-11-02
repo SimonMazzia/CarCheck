@@ -15,6 +15,9 @@ namespace carCheckFront
         private readonly ServicioNegocio servicioNegocio =
             new ServicioNegocio();
 
+        private readonly VehiculoNegocio vehiculoNegocio =
+            new VehiculoNegocio();
+
         public FrmHistorial()
         {
             InitializeComponent();
@@ -49,49 +52,122 @@ namespace carCheckFront
 
             dgvHistorial.AlternatingRowsDefaultCellStyle.BackColor =
                 Color.FromArgb(248, 250, 252);
+
+            dgvHistorial.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+
+            dgvHistorial.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
+
+            dgvHistorial.MultiSelect = false;
+            dgvHistorial.ReadOnly = true;
+            dgvHistorial.AllowUserToAddRows = false;
         }
 
         // Carga inicial
         private void FrmHistorial_Load(object sender, EventArgs e)
         {
-            CargarHistorial();
+            CargarVehiculos();
         }
 
-        // Consultar servicios del usuario actual
+        // Cargar vehículos del usuario actual
+        private void CargarVehiculos()
+        {
+            try
+            {
+                int usuarioId = Sesion.UsuarioActual.Id;
+
+                var vehiculos =
+                    vehiculoNegocio.ObtenerVehiculosPorUsuario(usuarioId);
+
+                cmbVehiculos.DataSource = null;
+
+                cmbVehiculos.DisplayMember = "Descripcion";
+                cmbVehiculos.ValueMember = "Id";
+
+                var opciones = vehiculos.Select(v => new
+                {
+                    v.Id,
+                    Descripcion = $"{v.Marca} {v.Modelo} - {v.Patente}"
+                }).ToList();
+
+                cmbVehiculos.DataSource = opciones;
+
+                if (opciones.Count == 0)
+                {
+                    dgvHistorial.DataSource = null;
+
+                    MessageBox.Show(
+                        "Todavía no tenés vehículos registrados.",
+                        "CarCheck",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    return;
+                }
+
+                CargarHistorial();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "No se pudieron cargar los vehículos.\n\n" + ex.Message,
+                    "CarCheck",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        // Consultar historial del vehículo seleccionado
         private void CargarHistorial()
         {
             try
             {
-                var servicios =
-                    servicioNegocio.ObtenerServiciosPorUsuario(
-                        Sesion.UsuarioActual.Id);
+                if (cmbVehiculos.SelectedValue == null)
+                    return;
 
+                int usuarioId = Sesion.UsuarioActual.Id;
+                int vehiculoId = Convert.ToInt32(
+                    cmbVehiculos.SelectedValue);
+
+                // Verificar que el vehículo pertenezca al usuario
+                var vehiculo =
+                    vehiculoNegocio.ObtenerVehiculoPorUsuario(
+                        vehiculoId,
+                        usuarioId);
+
+                if (vehiculo == null)
+                {
+                    dgvHistorial.DataSource = null;
+
+                    MessageBox.Show(
+                        "No tenés autorización para acceder a este vehículo.",
+                        "CarCheck",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                // Obtener los servicios del usuario
+                var servicios =
+                    servicioNegocio.ObtenerServiciosPorUsuario(usuarioId);
+
+                // Filtrar los servicios del vehículo seleccionado
                 var historial = servicios
+                    .Where(s => s.VehiculoId == vehiculo.Id)
                     .Select(s => new
                     {
                         s.Id,
-
-                        Vehiculo = s.Vehiculo == null
-                            ? "Sin vehículo"
-                            : $"{s.Vehiculo.Marca} {s.Vehiculo.Modelo}",
-
-                        Patente = s.Vehiculo == null
-                            ? ""
-                            : s.Vehiculo.Patente,
-
                         Fecha = s.Fecha,
-
                         TipoServicio = s.TipoServicio == null
                             ? "Sin especificar"
                             : s.TipoServicio.Nombre,
-
                         Kilometraje = s.Kilometraje,
-
                         Descripcion = string.IsNullOrWhiteSpace(
                             s.Descripcion)
                             ? "Sin descripción"
                             : s.Descripcion,
-
                         Costo = s.Costo
                     })
                     .OrderByDescending(s => s.Fecha)
@@ -99,18 +175,8 @@ namespace carCheckFront
 
                 dgvHistorial.DataSource = historial;
 
-                // Ocultar el identificador interno
                 if (dgvHistorial.Columns.Contains("Id"))
-                {
                     dgvHistorial.Columns["Id"].Visible = false;
-                }
-
-                // Encabezados y formatos
-                if (dgvHistorial.Columns.Contains("Vehiculo"))
-                    dgvHistorial.Columns["Vehiculo"].HeaderText = "Vehículo";
-
-                if (dgvHistorial.Columns.Contains("Patente"))
-                    dgvHistorial.Columns["Patente"].HeaderText = "Patente";
 
                 if (dgvHistorial.Columns.Contains("Fecha"))
                 {
@@ -149,10 +215,11 @@ namespace carCheckFront
                         CultureInfo.GetCultureInfo("es-AR");
                 }
 
-                if (servicios.Count == 0)
+                if (historial.Count == 0)
                 {
                     MessageBox.Show(
-                        "Todavía no hay servicios registrados.",
+                        "Este vehículo todavía no tiene servicios registrados. " +
+                        "Podés exportar igualmente su informe en PDF.",
                         "Historial de mantenimiento",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -168,44 +235,54 @@ namespace carCheckFront
             }
         }
 
+        // Cambiar vehículo seleccionado
+        private void cmbVehiculos_SelectedIndexChanged(
+            object sender,
+            EventArgs e)
+        {
+            if (cmbVehiculos.SelectedValue != null &&
+                cmbVehiculos.SelectedValue is int)
+            {
+                CargarHistorial();
+            }
+        }
+
         // Botón Actualizar
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             CargarHistorial();
         }
 
-        // Exportar el historial del vehículo seleccionado
+        // Exportar historial del vehículo seleccionado
         private void btnExportarPdf_Click(object sender, EventArgs e)
         {
-            if (dgvHistorial.CurrentRow == null ||
-                dgvHistorial.CurrentRow.IsNewRow)
-            {
-                MessageBox.Show(
-                    "Seleccioná un servicio de la tabla para exportar " +
-                    "el historial de su vehículo.",
-                    "CarCheck",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
-                return;
-            }
-
             try
             {
-                int servicioId = Convert.ToInt32(
-                    dgvHistorial.CurrentRow.Cells["Id"].Value);
-
-                var servicios =
-                    servicioNegocio.ObtenerServiciosPorUsuario(
-                        Sesion.UsuarioActual.Id);
-
-                var servicioSeleccionado = servicios
-                    .FirstOrDefault(s => s.Id == servicioId);
-
-                if (servicioSeleccionado?.Vehiculo == null)
+                if (cmbVehiculos.SelectedValue == null)
                 {
                     MessageBox.Show(
-                        "No se encontró el vehículo asociado al servicio.",
+                        "Seleccioná un vehículo para exportar su historial.",
+                        "CarCheck",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    return;
+                }
+
+                int usuarioId = Sesion.UsuarioActual.Id;
+                int vehiculoId = Convert.ToInt32(
+                    cmbVehiculos.SelectedValue);
+
+                // Validar propiedad del vehículo
+                var vehiculo =
+                    vehiculoNegocio.ObtenerVehiculoPorUsuario(
+                        vehiculoId,
+                        usuarioId);
+
+                if (vehiculo == null)
+                {
+                    MessageBox.Show(
+                        "No tenés autorización para acceder a este vehículo.",
                         "CarCheck",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
@@ -213,8 +290,11 @@ namespace carCheckFront
                     return;
                 }
 
-                var vehiculo = servicioSeleccionado.Vehiculo;
+                // Obtener todos los servicios del usuario
+                var servicios =
+                    servicioNegocio.ObtenerServiciosPorUsuario(usuarioId);
 
+                // Filtrar el historial del vehículo
                 var historialVehiculo = servicios
                     .Where(s => s.VehiculoId == vehiculo.Id)
                     .OrderByDescending(s => s.Fecha)
@@ -233,6 +313,7 @@ namespace carCheckFront
                 if (dialogo.ShowDialog() != DialogResult.OK)
                     return;
 
+                // Generar el PDF
                 ReporteHistorialPdf.Generar(
                     vehiculo,
                     historialVehiculo,
@@ -255,3 +336,4 @@ namespace carCheckFront
         }
     }
 }
+
